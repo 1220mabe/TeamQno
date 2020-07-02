@@ -12,6 +12,7 @@ def check_arc_stan(deck):
     if 'Shatter the Sky' in decktext and 'Teferi, Time Raveler' in decktext:deckname = "Azorius Control" 
     if 'Ugin, the Spirit Dragon' in decktext  and 'Hydroid Krasis' in decktext:deckname = "Simic Ramp" 
     if 'Mayhem Devil' in decktext  and 'Dreadhorde Butcher' in decktext: deckname = "Rakdos Sacrifice"
+    if 'Mayhem Devil' in decktext  and 'Serrated Scorpion' in decktext: deckname = "Rakdos Sacrifice"
     if 'Tajic, Legion’s Edge' in decktext  and 'Legion Warboss' in decktext:deckname = "Boros Aggro" 
     if 'Gruul Spellbreaker' in decktext  and 'Questing Beast' in decktext:deckname = "Gruul Aggro" 
     if 'Opt' in decktext  and 'Shock' in decktext:deckname = "Izzet Aggro" 
