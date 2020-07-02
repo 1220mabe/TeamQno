@@ -132,9 +132,10 @@ def to_csv_mo(url, filename,title,category):
         csv_data.append('\r\n'.join(decks))
 
         post_title = categorize_decks.check_arc_stan(csv_data)
-
-        #記事を下書き投稿する（'draft'ではなく、'publish'にすれば公開投稿できます。）
-        post_article.post_article('publish','',post_title, '\r\n\r\n'.join(csv_data), category,title, media_id=None)
+        if category == categorystan:category_list = [15,34]
+        if category == categorypio:category_list = [15,36]
+        title_tag = []
+        post_article.post_article('draft',post_title,post_title,'\r\n\r\n'.join(csv_data),category_list,title_tag,media_id=None)
 
         # ファイルクローズド
         final_csv_data.append('')
