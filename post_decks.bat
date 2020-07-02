@@ -1,0 +1,1 @@
+C:/Users/user/AppData/Local/Programs/Python/Python38-32/python.exe e:/Python/20200616/test.py
