@@ -131,13 +131,17 @@ def to_csv_mo(url, filename,title,category):
         decks.append("[/mtg_deck]")
         csv_data.append('\r\n'.join(decks))
 
-        post_title = categorize_decks.check_arc_stan(csv_data)
+        #アーキタイプカテゴライズ
         if category == categorystan:category_list = [15,34]
+        if category == categorystan:post_title = categorize_decks.check_arc_stan(csv_data)
         if category == categorypio:category_list = [15,36]
+        if category == categorypio:post_title = categorize_decks.check_arc_pion(csv_data)
+
+        #ポスト
         title_tag = []
         post_article.post_article('draft',post_title,post_title,'\r\n\r\n'.join(csv_data),category_list,title_tag,media_id=None)
 
-        # ファイルクローズド
+        # csvファイル出力用
         final_csv_data.append('')
         final_csv_data.append('')
         final_csv_data.append('qno')
@@ -153,11 +157,12 @@ def to_csv_mo(url, filename,title,category):
         final_csv_data.append('')
         csv_write.writerow(csvheader_data)
         csv_write.writerow(final_csv_data)
+        # ファイルクローズド
         csv_file.close()
         if os.path.getsize(filename + " " + player_name.text + csvfile) <= 0:
             os.remove(filename + " " + player_name.text + csvfile)
 
-# デッキcsv作成
+# デッキリストポストとcsv作成
 #スタンダード
 title = stdlea + tdyesterday.strftime('-%Y-%m-%d')
 url = mo + title
