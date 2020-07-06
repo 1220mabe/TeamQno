@@ -155,6 +155,12 @@ def to_csv_mo(url, filename,title,category):
             make_row(span_row_list, decks)
             make_row_simple(span_row_list, decks_arena)
         decks.append("[/mtg_deck]")
+        # MTGACode Botton作成
+        today_str = datetime.today().strftime('%Y/%m/')
+        mtgacode_url = "https://teamqno.work/wp-content/uploads/"+ today_str + filename + " " + player_name.text + txtfile
+        mtgacode_botton = ("[maxbutton id=\"9\" url={%s}]"  % mtgacode_url)
+        decks.append(mtgacode_botton)
+
         csv_data.append('\r\n'.join(decks))
 
         #アーキタイプカテゴライズ
