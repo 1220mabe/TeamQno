@@ -26,6 +26,7 @@ categorystan = "Decks,Standard"
 categorypio = "Decks,Pioneer"
 
 csvfile = ".csv"
+txtfile = ".txt"
 DeckPath = "E:\TeamQno\Decks\\"
 
 def make_row(span_row_list, decks):
@@ -37,6 +38,19 @@ def make_row(span_row_list, decks):
         card_name = str(card_name_r.text)
         row.append("<span style=\"font-size: 14px;\">" + card_count)
         row.append(card_name + "</span>")
+        row_str=' '.join(row)
+        decks.append(row_str)
+    return
+
+def make_row_simple(span_row_list, decks):
+    for span_row in span_row_list:
+        row = []
+        card_count_r = span_row.find("span",{"class":"card-count"})
+        card_name_r = span_row.find("span",{"class":"card-name"})
+        card_count = str(card_count_r.text)
+        card_name = str(card_name_r.text)
+        row.append("\n" + card_count)
+        row.append(card_name)
         row_str=' '.join(row)
         decks.append(row_str)
     return
@@ -69,6 +83,7 @@ def to_csv_mo(url, filename,title,category):
         final_csv_data = []
         csv_data=[]
         decks = []
+        decks_arena = []
         player_name = player.find("h4")
         # ファイル存在チェック
         if os.path.exists(filename + " " + player_name.text + csvfile) and os.path.getsize(filename + " " + player_name.text + csvfile) > 0:
@@ -80,54 +95,65 @@ def to_csv_mo(url, filename,title,category):
         decks.append("<b>" + title +"</b>")
         decks.append("<b>" + player_name.text + "</b>")
         decks.append("[mtg_deck]")
+        decks_arena.append("Deck")
         #プレインズウォーカー
         planeswalkers = player.find('div', class_='sorted-by-planeswalker clearfix element')
         if planeswalkers:
             decks.append("<span style=\"font-size: 14px;\"><b>Planeswalker</b></span>")
             span_row_list = planeswalkers.findAll("span",{"class":"row"})
             make_row(span_row_list, decks)
+            make_row_simple(span_row_list, decks_arena)
         #クリーチャー
         creatures = player.find('div', class_='sorted-by-creature clearfix element')
         if creatures:
             decks.append("<span style=\"font-size: 14px;\"><b>Creature</b></span>")
             span_row_list = creatures.findAll("span",{"class":"row"})
             make_row(span_row_list, decks)
+            make_row_simple(span_row_list, decks_arena)
         #インスタント
         instants = player.find('div', class_='sorted-by-instant clearfix element')
         if instants:
             decks.append("<span style=\"font-size: 14px;\"><b>Instant</b></span>")
             span_row_list = instants.findAll("span",{"class":"row"})
             make_row(span_row_list, decks)
+            make_row_simple(span_row_list, decks_arena)
         #ソーサリー
         sorcerys = player.find('div', class_='sorted-by-sorcery clearfix element')
         if sorcerys:
             decks.append("<span style=\"font-size: 14px;\"><b>Sorcery</b></span>")
             span_row_list = sorcerys.findAll("span",{"class":"row"})
             make_row(span_row_list, decks)
+            make_row_simple(span_row_list, decks_arena)
         #エンチャント
         enchantments = player.find('div', class_='sorted-by-enchantment clearfix element')
         if enchantments:
             decks.append("<span style=\"font-size: 14px;\"><b>Enchantment</b></span>")
             span_row_list = enchantments.findAll("span",{"class":"row"})
             make_row(span_row_list, decks)
+            make_row_simple(span_row_list, decks_arena)
         #アーティファクト
         artifacts = player.find('div', class_='sorted-by-artifact clearfix element')
         if artifacts:
             decks.append("<span style=\"font-size: 14px;\"><b>Artifact</b></span>")
             span_row_list = artifacts.findAll("span",{"class":"row"})
             make_row(span_row_list, decks)
+            make_row_simple(span_row_list, decks_arena)
         #土地
         lands = player.find('div', class_='sorted-by-land clearfix element')
         if lands:
             decks.append("<span style=\"font-size: 14px;\"><b>Land</b></span>")
             span_row_list = lands.findAll("span",{"class":"row"})
             make_row(span_row_list, decks)
+            make_row_simple(span_row_list, decks_arena)
         #サイドボード
         sideboards = player.find('div', class_='sorted-by-sideboard-container clearfix element')
         if sideboards:
             decks.append("<span style=\"font-size: 14px;\"><b>Sideboard</b></span>")
+            decks_arena.append("\n\n")
+            decks_arena.append("Sideboard")
             span_row_list = sideboards.findAll("span",{"class":"row"})
             make_row(span_row_list, decks)
+            make_row_simple(span_row_list, decks_arena)
         decks.append("[/mtg_deck]")
         csv_data.append('\r\n'.join(decks))
 
@@ -138,7 +164,8 @@ def to_csv_mo(url, filename,title,category):
         if category == categorypio:post_title = categorize_decks.check_arc_pion(csv_data)
 
         #ポスト
-        title_tag = []
+        title_tag=[]
+        title_tag.append(title)
         post_article.post_article('draft',post_title,post_title,'\r\n\r\n'.join(csv_data),category_list,title_tag,media_id=None)
 
         # csvファイル出力用
@@ -161,6 +188,17 @@ def to_csv_mo(url, filename,title,category):
         csv_file.close()
         if os.path.getsize(filename + " " + player_name.text + csvfile) <= 0:
             os.remove(filename + " " + player_name.text + csvfile)
+        # MTGArenaファイル出力用
+        # ファイル存在チェック
+        if os.path.exists(filename + " " + player_name.text + txtfile) and os.path.getsize(filename + " " + player_name.text + txtfile) > 0:
+            return
+        with open(filename + " " + player_name.text + txtfile, mode='w') as f:
+            f.writelines(decks_arena)
+        # ファイルクローズド
+        f.close()
+        if os.path.getsize(filename + " " + player_name.text + txtfile) <= 0:
+            os.remove(filename + " " + player_name.text + txtfile)
+
 
 # デッキリストポストとcsv作成
 #スタンダード
@@ -218,6 +256,7 @@ title = stdpre + dbyesterday.strftime('-%Y-%m-%d')
 url = mo + title
 filename = DeckPath +stdpre + dbyesterday.strftime('-%Y-%m-%d')
 to_csv_mo(url,filename,title,categorystan)
+
 
 #パイオニア
 title =  piolea + today.strftime('-%Y-%m-%d')

@@ -1,6 +1,3 @@
-
-print("run categorize_decks")
-
 #スタンダード
 def check_arc_stan(deck):
     decktext = ",".join(deck)
@@ -8,6 +5,9 @@ def check_arc_stan(deck):
     deckname = "Rogue"
     if "Anax, Hardened in the Forge" in decktext:deckname = "Mono-Red"
     if "Vivien, Arkbow Ranger" in decktext:deckname = "Mono-Green"
+    if "Spawn of Mayhem" in decktext and "Rankle, Master of Pranks" in decktext:deckname = "Mono-Black"
+
+    
     #2色
     if "Shatter the Sky" in decktext and "Teferi, Time Raveler" in decktext:deckname = "Azorius Control"
     if "Ugin, the Spirit Dragon" in decktext and "Hydroid Krasis" in decktext:deckname = "Simic Ramp"
@@ -25,6 +25,7 @@ def check_arc_stan(deck):
     if "Teferi, Time Raveler" in decktext and "Nightpack Ambusher" in decktext:deckname = "Bant Flash"
     if "Teferi, Time Raveler" in decktext and "Atris, Oracle of Half-Truths" in decktext:deckname = "Esper Control"
     if "Uro, Titan of Nature’s Wrath" in decktext and "Casualties of War" in decktext:deckname = "Sultai Ramp"
+    if "Nissa, Who Shakes the World" in decktext and "Discontinuity" in decktext and "Titans' Nest" in decktext:deckname = "Sultai Discontinuity"
 
     return deckname
 
