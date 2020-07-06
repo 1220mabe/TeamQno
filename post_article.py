@@ -9,7 +9,6 @@ WP_URL = 'https://teamqno.work/'  # 例: 'https://virtual-surfer.com/'
 WP_USERNAME = 'qno'
 WP_PASSWORD = '3gBL 0aGm cKDt sHnB GC3v xPMO'
 
-
 def post_article(status, slug, title, content, category_ids, tag_ids, media_id):
    """
    記事を投稿して成功した場合はTrue、失敗した場合はFalseを返します。
