@@ -27,7 +27,7 @@ categorypio = "Decks,Pioneer"
 
 csvfile = ".csv"
 txtfile = ".txt"
-DeckPath = "E:\TeamQno\Decks\\"
+DeckPath = "E:\\TeamQno\\Decks\\"
 
 def make_row(span_row_list, decks):
     for span_row in span_row_list:
@@ -56,7 +56,7 @@ def make_row_simple(span_row_list, decks):
     return
 
 #MOデッキリストをcsvファイル化
-def to_csv_mo(url, filename,title,category):
+def to_csv_mo(url, filename,filename_,title,category):
 
     csvheader_data = []
     # ファイルヘッダー挿入
@@ -157,22 +157,24 @@ def to_csv_mo(url, filename,title,category):
         decks.append("[/mtg_deck]")
         # MTGACode Botton作成
         today_str = datetime.today().strftime('%Y/%m/')
-        mtgacode_url = "https://teamqno.work/wp-content/uploads/"+ today_str + filename + " " + player_name.text + txtfile
-        mtgacode_botton = ("[maxbutton id=\"9\" url={%s}]"  % mtgacode_url)
+        mtgacode_url = ("https://teamqno.work/wp-content/uploads/"+ today_str + filename_ + " " + player_name.text + txtfile).replace(' ', '-').replace('(', '').replace(')', '')
+        mtgacode_botton = ("[maxbutton id=\"9\" url=\"%s\"]"  % mtgacode_url)
         decks.append(mtgacode_botton)
 
         csv_data.append('\r\n'.join(decks))
 
         #アーキタイプカテゴライズ
         if category == categorystan:category_list = [15,34]
-        if category == categorystan:post_title = categorize_decks.check_arc_stan(csv_data)
+        if category == categorystan: results = categorize_decks.check_arc_stan(csv_data)
         if category == categorypio:category_list = [15,36]
-        if category == categorypio:post_title = categorize_decks.check_arc_pion(csv_data)
-
+        if category == categorypio:results = categorize_decks.check_arc_pion(csv_data)
+        post_title = results[0]
+        media_id = results[1]
+        #タグIDは後程
+        title_list = []
+        #title_list.append(title)
         #ポスト
-        title_tag=[]
-        title_tag.append(title)
-        post_article.post_article('draft',post_title,post_title,'\r\n\r\n'.join(csv_data),category_list,title_tag,media_id=None)
+        post_article.post_article('draft',post_title,post_title,'\r\n\r\n'.join(csv_data),category_list,title_list,media_id)
 
         # csvファイル出力用
         final_csv_data.append('')
@@ -180,7 +182,7 @@ def to_csv_mo(url, filename,title,category):
         final_csv_data.append('qno')
         final_csv_data.append('')
         final_csv_data.append('')
-        final_csv_data.append('publish')
+        final_csv_data.append('private')
         final_csv_data.append('')
         final_csv_data.append(post_title)
         final_csv_data.append('\r\n\r\n'.join(csv_data))
@@ -211,101 +213,130 @@ def to_csv_mo(url, filename,title,category):
 title = stdlea + tdyesterday.strftime('-%Y-%m-%d')
 url = mo + title
 filename = DeckPath + stdlea + tdyesterday.strftime('-%Y-%m-%d')
-to_csv_mo(url,filename,title,categorystan)
+filename_ = stdlea + tdyesterday.strftime('-%Y-%m-%d')
+to_csv_mo(url,filename,filename_,title,categorystan)
 
 title = stdlea + today.strftime('-%Y-%m-%d')
 url = mo + title
 filename = DeckPath + stdlea + today.strftime('-%Y-%m-%d')
-to_csv_mo(url,filename,title,categorystan)
+filename_ = stdlea + today.strftime('-%Y-%m-%d')
+to_csv_mo(url,filename,filename_,title,categorystan)
 
 title = stdlea + yesterday.strftime('-%Y-%m-%d')
 url = mo + title
 filename = DeckPath +stdlea + yesterday.strftime('-%Y-%m-%d')
-to_csv_mo(url,filename,title,categorystan)
+filename_ = stdlea + yesterday.strftime('-%Y-%m-%d')
+to_csv_mo(url,filename,filename_,title,categorystan)
 
 title = stdlea + dbyesterday.strftime('-%Y-%m-%d')
 url = mo + title
 filename = DeckPath +stdlea + dbyesterday.strftime('-%Y-%m-%d')
-to_csv_mo(url,filename,title,categorystan)
+filename_ =stdlea + dbyesterday.strftime('-%Y-%m-%d')
+to_csv_mo(url,filename,filename_,title,categorystan)
 
 title = stdcha + today.strftime('-%Y-%m-%d')
 url = mo + title
 filename = DeckPath +stdcha + today.strftime('-%Y-%m-%d')
-to_csv_mo(url,filename,title,categorystan)
+filename_ = stdcha + today.strftime('-%Y-%m-%d')
+to_csv_mo(url,filename,filename_,title,categorystan)
 
 title =  stdcha + yesterday.strftime('-%Y-%m-%d')
 url = mo + title
 filename = DeckPath +stdcha + yesterday.strftime('-%Y-%m-%d')
-to_csv_mo(url,filename,title,categorystan)
+filename_ = stdcha + yesterday.strftime('-%Y-%m-%d')
+to_csv_mo(url,filename,filename_,title,categorystan)
 
 title =  stdcha + dbyesterday.strftime('-%Y-%m-%d')
 url = mo + title
 filename = DeckPath +stdcha + dbyesterday.strftime('-%Y-%m-%d')
-to_csv_mo(url,filename,title,categorystan)
+filename_ = stdcha + dbyesterday.strftime('-%Y-%m-%d')
+to_csv_mo(url,filename,filename_,title,categorystan)
 
 title =  stdpre + today.strftime('-%Y-%m-%d')
 url = mo + title
 filename = DeckPath +stdpre + today.strftime('-%Y-%m-%d')
-to_csv_mo(url,filename,title,categorystan)
+filename_ = stdpre + today.strftime('-%Y-%m-%d')
+to_csv_mo(url,filename,filename_,title,categorystan)
 
 title = stdpre + yesterday.strftime('-%Y-%m-%d')
 url = mo + title
 filename = DeckPath +stdpre + yesterday.strftime('-%Y-%m-%d')
-to_csv_mo(url,filename,title,categorystan)
+filename_ = stdpre + yesterday.strftime('-%Y-%m-%d')
+to_csv_mo(url,filename,filename_,title,categorystan)
 
 title =  stdpre + today.strftime('-%Y-%m-%d')
 url = mo + title
 filename = DeckPath +stdpre + today.strftime('-%Y-%m-%d')
-to_csv_mo(url,filename,title,categorystan)
+filename_ = stdpre + today.strftime('-%Y-%m-%d')
+to_csv_mo(url,filename,filename_,title,categorystan)
 
 title = stdpre + dbyesterday.strftime('-%Y-%m-%d')
 url = mo + title
 filename = DeckPath +stdpre + dbyesterday.strftime('-%Y-%m-%d')
-to_csv_mo(url,filename,title,categorystan)
+filename_ = stdpre + dbyesterday.strftime('-%Y-%m-%d')
+to_csv_mo(url,filename,filename_,title,categorystan)
 
 
 #パイオニア
 title =  piolea + today.strftime('-%Y-%m-%d')
 url = mo + title
 filename = DeckPath +piolea + today.strftime('-%Y-%m-%d')
-to_csv_mo(url,filename,title,categorypio)
+filename_ = piolea + today.strftime('-%Y-%m-%d')
+to_csv_mo(url,filename,filename_,title,categorypio)
+
 
 title =  piolea + yesterday.strftime('-%Y-%m-%d')
 url = mo + title
 filename = DeckPath +piolea + yesterday.strftime('-%Y-%m-%d')
-to_csv_mo(url,filename,title,categorypio)
+filename_ = piolea + yesterday.strftime('-%Y-%m-%d')
+to_csv_mo(url,filename,filename_,title,categorypio)
+
 
 title =  piolea + dbyesterday.strftime('-%Y-%m-%d')
 url = mo + title
 filename = DeckPath +piolea + dbyesterday.strftime('-%Y-%m-%d')
-to_csv_mo(url,filename,title,categorypio)
+filename_ = piolea + dbyesterday.strftime('-%Y-%m-%d')
+to_csv_mo(url,filename,filename_,title,categorypio)
+
 
 title =  piocha + today.strftime('-%Y-%m-%d')
 url = mo + title
 filename = DeckPath +piocha + today.strftime('-%Y-%m-%d')
-to_csv_mo(url,filename,title,categorypio)
+filename_ = piocha + today.strftime('-%Y-%m-%d')
+to_csv_mo(url,filename,filename_,title,categorypio)
+
 
 title = piocha + yesterday.strftime('-%Y-%m-%d')
 url = mo + title
 filename = DeckPath +piocha + yesterday.strftime('-%Y-%m-%d')
-to_csv_mo(url,filename,title,categorypio)
+filename_ = piocha + yesterday.strftime('-%Y-%m-%d')
+to_csv_mo(url,filename,filename_,title,categorypio)
+
 
 title = piocha + dbyesterday.strftime('-%Y-%m-%d')
 url = mo + title
 filename = DeckPath +piocha + dbyesterday.strftime('-%Y-%m-%d')
-to_csv_mo(url,filename,title,categorypio)
+filename_ = piocha + dbyesterday.strftime('-%Y-%m-%d')
+to_csv_mo(url,filename,filename_,title,categorypio)
+
 
 title = piopre + today.strftime('-%Y-%m-%d')
 url = mo + title
 filename = DeckPath +piopre + today.strftime('-%Y-%m-%d')
-to_csv_mo(url,filename,title,categorypio)
+filename_ = piopre + today.strftime('-%Y-%m-%d')
+to_csv_mo(url,filename,filename_,title,categorypio)
+
 
 title =  piopre + yesterday.strftime('-%Y-%m-%d')
 url = mo + title
 filename = DeckPath +piopre + yesterday.strftime('-%Y-%m-%d')
-to_csv_mo(url,filename,title,categorypio)
+filename_ = piopre + yesterday.strftime('-%Y-%m-%d')
+to_csv_mo(url,filename,filename_,title,categorypio)
+
 
 title =  piopre + dbyesterday.strftime('-%Y-%m-%d')
 url = mo + title
 filename = DeckPath +piopre + dbyesterday.strftime('-%Y-%m-%d')
-to_csv_mo(url,filename,title,categorypio)
+filename_ = piopre + dbyesterday.strftime('-%Y-%m-%d')
+to_csv_mo(url,filename,filename_,title,categorypio)
+

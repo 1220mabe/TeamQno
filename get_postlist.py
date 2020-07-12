@@ -11,13 +11,14 @@ from collections import Counter
 from collections import OrderedDict
 from datetime import date,timedelta
 
+three_weeks_ago = datetime.today() + timedelta(weeks=-3)
+two_weeks_ago = datetime.today() + timedelta(weeks=-2)
 one_weeks_ago = datetime.today() + timedelta(weeks=-1)
-oneweeksago_str = one_weeks_ago.strftime('%Y/%m/%d')
 today_str = datetime.today().strftime('%Y/%m/%d')
 
-def get_graph_stan():
+def get_graph_stan(weeks_ago):
     metadeck = []
-    for i in range(10):
+    for i in range(50):
         #URL Pageループ
         url ="https://teamqno.work/category/decks/standard-metagame/page/{}".format(i+1)
         #print(url)
@@ -35,7 +36,7 @@ def get_graph_stan():
             tdatetime = datetime.strptime(date_str, ' %Y.%m.%d')
 
             #print(one_weeks_ago<=tdatetime)
-            if one_weeks_ago<=tdatetime:
+            if weeks_ago<=tdatetime:
                 metadeck.append(deck_name.get_text())
 
 
@@ -51,14 +52,14 @@ def get_graph_stan():
     tdata.reverse()
     #print(tindex)
     #print(tdata)
-    xlabel = "Standard Metagame " + oneweeksago_str + " - "  + today_str + " by Team Qno Research"
+    xlabel = "Standard Metagame " + weeks_ago.strftime('%Y/%m/%d')  + " - "  + today_str + " by Team Qno Research"
     #print(xlabel)
     output_graph.make_graph(tindex,tdata,xlabel)
     return
 
-def get_graph_pion():
+def get_graph_pion(weeks_ago):
     metadeck = []
-    for i in range(10):
+    for i in range(50):
         #URL Pageループ
         url ="https://teamqno.work/category/decks/pioneer-metagame//page/{}".format(i+1)
         #print(url)
@@ -70,13 +71,12 @@ def get_graph_pion():
             deck_name = deck.find('h2', class_='entry-card-title card-title e-card-title')
             deck_post_date = deck.find("span",{"class":"post-date"})
             # 日付比較
-            # 基準日の1週間前を算出
             date_str=deck_post_date.get_text()
             #print(date_str)
             tdatetime = datetime.strptime(date_str, ' %Y.%m.%d')
 
             #print(one_weeks_ago<=tdatetime)
-            if one_weeks_ago<=tdatetime:
+            if weeks_ago<=tdatetime:
                 metadeck.append(deck_name.get_text())
 
 
@@ -92,12 +92,14 @@ def get_graph_pion():
     tdata.reverse()
     #print(tindex)
     #print(tdata)
-    xlabel = "Pioneer Metagame " + oneweeksago_str + " - "  + today_str + " by Team Qno Research"
+    xlabel = "Pioneer Metagame " + weeks_ago.strftime('%Y/%m/%d') + " - "  + today_str + " by Team Qno Research"
     #print(xlabel)
     output_graph.make_graph(tindex,tdata,xlabel)
     return
 
 
 # 実行
-get_graph_stan()
-get_graph_pion()
+# get_graph_stan(one_weeks_ago)
+# get_graph_pion(one_weeks_ago)
+get_graph_pion(two_weeks_ago)
+# get_graph_pion(three_weeks_ago)
