@@ -73,6 +73,113 @@ def check_arc_stan(deck):
     if "Nissa, Who Shakes the World" in decktext and "Discontinuity" in decktext and "Titans' Nest" in decktext:
         deckname = "Sultai Discontinuity"
         media_id = 1009   #Discontinuity
+    if "Uro, Titan of Nature’s Wrath" in decktext and "Liliana, Waker of the Dead" in decktext:
+        deckname = "Sultai Control"
+        media_id = 2176   #Liliana, Waker of the Dead
+    if "Hydroid Krasis" in decktext and "Heartless Act" in decktext:
+        deckname = "Sultai Control"
+        media_id = 2284   #Hydroid Krasis
+        
+
+    return deckname,media_id
+
+#ヒストリック
+def check_arc_hist(deck):
+    decktext = ",".join(deck)
+    media_id = 55   #Team QnoLogo
+    deckname = "Rogue"
+
+    #1色
+    if "Anax, Hardened in the Forge" in decktext:
+        deckname = "Mono-Red"
+        media_id = 1933   #Anax, Hardened in the Forge
+    if "Vivien, Arkbow Ranger" in decktext:
+        deckname = "Mono-Green"
+        media_id = 1934   #Vivien, Arkbow Ranger
+    if "The Great Henge" in decktext:
+        deckname = "Mono-Green"
+        media_id = 1935   #The Great Henge
+    if "Spawn of Mayhem" in decktext and "Rankle, Master of Pranks" in decktext:
+        deckname = "Mono-Black"
+        media_id = 377   #Rankle, Master of Pranks
+    if "Heliod, Sun-Crowned" in decktext:
+        deckname = "Mono-White"
+        media_id = 590   #Heliod, Sun-Crowned
+    if "Muxus, Goblin Grandee" in decktext:
+        deckname = "Mono-Red Goblin"
+        media_id = 2474   #Muxus, Goblin Grandee
+
+    #2色
+    if "Shatter the Sky" in decktext and "Teferi, Time Raveler" in decktext:
+        deckname = "Azorius Control"
+        media_id = 709   #Teferi, Time Raveler
+    if "Ugin, the Spirit Dragon" in decktext and "Hydroid Krasis" in decktext:
+        deckname = "Simic Ramp"
+        media_id = 373   #Ugin, the Spirit Dragon
+    if "Mayhem Devil" in decktext and "Priest of Forgotten Gods" in decktext:
+        deckname = "Rakdos Sacrifice"
+        media_id = 353   #Mayhem Devil
+    if "Mayhem Devil" in decktext and "Woe Strider" in decktext:
+        deckname = "Rakdos Sacrifice"
+        media_id = 353   #Mayhem Devil
+    if "Tajic, Legion’s Edge" in decktext and "Legion Warboss" in decktext:
+        deckname = "Boros Aggro"
+        media_id = 715   #Legion Warboss
+    if "Gruul Spellbreaker" in decktext and "Questing Beast" in decktext:
+        deckname = "Gruul Aggro"
+        media_id = 713   #Gruul Spellbreaker
+    if "Opt" in decktext and "Shock" in decktext:
+        deckname = "Izzet Aggro"
+        media_id = 1936   #Opt
+    if "Season of Growth" in decktext and "Karametra’s Blessing" in decktext:
+        deckname = "Selesnya Aggro"
+        media_id = 1937   #Season of Growth
+    if "Lukka, Coppercoat Outcast" in decktext and "Craterhoof Behemoth" in decktext:
+        deckname = "Lukka, Coppercoat Outcast"
+        media_id = 2472   #Lukka, Coppercoat Outcast
+
+    #3色
+    if "Mayhem Devil" in decktext and "Gilded Goose" in decktext:
+        deckname = "Jund Sacrifice"
+        media_id = 353   #Mayhem Devil
+    if "Expansion // Explosion" in decktext and "Wilderness Reclamation" in decktext:
+        deckname = "Temur Reclamation"
+        media_id = 369   #Wilderness Reclamation
+    if "Uro, Titan of Nature’s Wrath" in decktext and "Teferi, Time Raveler" in decktext:
+        deckname = "Bant Ramp"
+        media_id = 592   #Uro, Titan of Nature’s Wrath
+    if "General Kudro of Drannith" in decktext and "Inspiring Veteran" in decktext:
+        deckname = "Mardu Knights"
+        media_id = 704   #General Kudro of Drannith
+    if "Teferi, Time Raveler" in decktext and "Nightpack Ambusher" in decktext:
+        deckname = "Bant Flash"
+        media_id = 501   #Nightpack Ambusher
+    if "Teferi, Time Raveler" in decktext and "Atris, Oracle of Half-Truths" in decktext:
+        deckname = "Esper Control"
+        media_id = 1938   #Atris, Oracle of Half-Truths
+    if "Uro, Titan of Nature’s Wrath" in decktext and "Casualties of War" in decktext:
+        deckname = "Sultai Ramp"
+        media_id = 1939   #Casualties of War
+    if "Nissa, Who Shakes the World" in decktext and "Discontinuity" in decktext and "Titans' Nest" in decktext:
+        deckname = "Sultai Discontinuity"
+        media_id = 1009   #Discontinuity
+    if "Uro, Titan of Nature’s Wrath" in decktext and "Liliana, Waker of the Dead" in decktext:
+        deckname = "Sultai Control"
+        media_id = 2176   #Liliana, Waker of the Dead
+    if "Hydroid Krasis" in decktext and "Heartless Act" in decktext:
+        deckname = "Sultai Control"
+        media_id = 2284   #Hydroid Krasis
+    if "Kethis, the Hidden Hand" in decktext and "Mox Amber" in decktext:
+        deckname = "Kethis Combo"
+        media_id = 2384   #Kethis, the Hidden Hand
+    if "Underworld Breach" in decktext and "Mox Amber" in decktext:
+        deckname = "Breach Combo"
+        media_id = 866   #Underworld Breach
+
+    #5色
+    if "Golos, Tireless Pilgrim" in decktext  and "Field of the Dead" in decktext:
+        deckname = "Five-color Golos"
+        media_id = 2537   #Golos, Tireless Pilgrim
 
     return deckname,media_id
 
@@ -95,6 +202,9 @@ def check_arc_pion(deck):
     if "Torbran, Thane of Red Fell" in decktext:
         deckname = "Mono-Red"
         media_id = 691   #Torbran, Thane of Red Fell
+    if "Goblin Piledriver" in decktext:
+        deckname = "Mono-Red Goblin"
+        media_id = 2169   #Goblin Piledriver
     #2色
     if "Inverter of Truth" in decktext and "Thassa's Oracle" in decktext:
         deckname = "Dimir Inverter"
@@ -138,6 +248,15 @@ def check_arc_pion(deck):
     if "Scrapheap Scrounger" in decktext and "Garruk, Unleashed" in decktext:
         deckname = "Golgari Aggro"
         media_id = 838   #Garruk, Unleashed
+    if "Kroxa, Titan of Death's Hunger" in decktext and "Liliana, Waker of the Dead" in decktext:
+        deckname = "Rakdos Control"
+        media_id = 2176   #Liliana, Waker of the Dead
+    if "Gruul Spellbreaker" in decktext and "Questing Beast" in decktext:
+        deckname = "Gruul Aggro"
+        media_id = 713   #Gruul Spellbreaker
+    if "Vraska, Golgari Queen" in decktext and "Traverse the Ulvenwald" in decktext:
+        deckname = "Golgari Delirium"
+        media_id = 2916   #Vraska, Golgari Queen
 
     #3色
     if "Traverse the Ulvenwald" in decktext and "Thoughtseize" in decktext and "Jace, Vryn's Prodigy" in decktext:
@@ -164,6 +283,15 @@ def check_arc_pion(deck):
     if "Expansion // Explosion" in decktext and "Wilderness Reclamation" in decktext:
         deckname = "Temur Reclamation"
         media_id = 1947   #Expansion // Explosion
+    if "Satyr Wayfinder" in decktext and "Prized Amalgam" in decktext:
+        deckname = "Sultai Dredge"
+        media_id = 878   #Prized Amalgam
+    if "Neoform" in decktext and "Swamp" in decktext:
+        deckname = "Sultai Neoform"
+        media_id = 2173   #Neoform
+    if "Kethis, the Hidden Hand" in decktext and "Mox Amber" in decktext:
+        deckname = "Kethis Combo"
+        media_id = 2384   #Kethis, the Hidden Hand
     #5色
     if "Niv-Mizzet Reborn" in decktext:
         deckname = "Niv to Light"

@@ -1,5 +1,6 @@
 # coding=utf-8
 import json
+import os
 import requests
 from urllib.parse import urljoin
 from datetime import datetime
@@ -41,3 +42,48 @@ def post_article(status, slug, title, content, category_ids, tag_ids, media_id):
                        auth=(user_, pass_))
    print('----------\n件名:「{}」の投稿リクエスト結果:{} res.status: {}'.format(title,"", repr(res.status_code)))
    return res
+
+def post_tag(tag):
+    user_ = WP_USERNAME
+    pass_ = WP_PASSWORD
+    res = requests.post(urljoin(WP_URL,'wp-json/wp/v2/tags'),
+                    data=json.dumps({"name":tag, "slug":tag, "description": tag}),
+                    headers={'Content-type': "application/json"},
+                    auth=(user_, pass_))
+    print(res)
+    return 
+
+def post_txt(file_path):
+    user_ = WP_USERNAME
+    pass_ = WP_PASSWORD
+    # check local file path
+    file_name = os.path.basename(file_path)
+    headers_ = {
+        "Content-Disposition": 'attachment; filename="{}"'.format(file_name),
+        "Content-Type": "application/octet-stream"}
+    # read local picture file
+    with open(file_path, 'rb') as f:
+        txt_data = f.read()
+    # send POST request
+    res = requests.post(urljoin(WP_URL,"wp-json/wp/v2/media/"),
+                        data=txt_data,
+                        headers=headers_,
+                        auth=(user_, pass_))
+    print(repr(res))
+
+#post_txt(r"E:\TeamQno\Decks\Pioneer-Preliminary-2020-07-14 azax (3-2).txt")
+
+def get_tags():
+    # credential and attributes
+    user_ = WP_USERNAME
+    pass_ = WP_PASSWORD
+    ids = []
+    params = {"page": 1,"per_page": 100,"order": "desc","orderby": "id"}
+    res = requests.get(urljoin(WP_URL, "wp-json/wp/v2/tags"),
+                        params=params,
+                        headers={'Content-type': "application/json"},
+                        auth=(user_, pass_))
+    #valuesで値をとってくる
+    for v in res.json():
+        ids.append(v["id"])
+    return ids[0]
