@@ -27,8 +27,6 @@ csvfile = ".csv"
 txtfile = ".txt"
 DeckPath = "E:\\TeamQno\\Decks\\"
 
-
-
 def make_row(count, name,decklist):
     card_count = str(count.text)
     card_name = str(name.text)
@@ -70,56 +68,56 @@ def get_list(deck_url):
         labels = kind.findAll('td', class_='decklist-builder-section-label-cell')
         for label in labels:
             #プレインズウォーカー
-            if label.text =='Planeswalker': 
+            if label.text =='Planeswalker':
                 deck.append('<span style=\"font-size: 14px;\"><b>Planeswalker</b></span>')
                 card_count = kind.findAll('td', class_='decklist-builder-card-quantity-cell')
                 card_name = kind.findAll('td', class_='decklist-builder-card-name-cell')
                 for i in range(len(card_count)):
                     make_row(card_count[i], card_name[i], deck)
             #クリーチャー
-            if label.text =='Creature': 
+            if label.text =='Creature':
                 deck.append('<span style=\"font-size: 14px;\"><b>Creature</b></span>')
                 card_count = kind.findAll('td', class_='decklist-builder-card-quantity-cell')
                 card_name = kind.findAll('td', class_='decklist-builder-card-name-cell')
                 for i in range(len(card_count)):
                     make_row(card_count[i], card_name[i], deck)
             #アーティファクト
-            if label.text =='Artifact': 
+            if label.text =='Artifact':
                 deck.append('<span style=\"font-size: 14px;\"><b>Artifact</b></span>')
                 card_count = kind.findAll('td', class_='decklist-builder-card-quantity-cell')
                 card_name = kind.findAll('td', class_='decklist-builder-card-name-cell')
                 for i in range(len(card_count)):
                     make_row(card_count[i], card_name[i], deck)
             #エンチャント
-            if label.text =='Enchantment': 
+            if label.text =='Enchantment':
                 deck.append('<span style=\"font-size: 14px;\"><b>Enchantment</b></span>')
                 card_count = kind.findAll('td', class_='decklist-builder-card-quantity-cell')
                 card_name = kind.findAll('td', class_='decklist-builder-card-name-cell')
                 for i in range(len(card_count)):
                     make_row(card_count[i], card_name[i], deck)
             #ソーサリー
-            if label.text =='Sorcery': 
+            if label.text =='Sorcery':
                 deck.append('<span style=\"font-size: 14px;\"><b>Sorcery</b></span>')
                 card_count = kind.findAll('td', class_='decklist-builder-card-quantity-cell')
                 card_name = kind.findAll('td', class_='decklist-builder-card-name-cell')
                 for i in range(len(card_count)):
                     make_row(card_count[i], card_name[i], deck)
             #インスタント
-            if label.text =='Instant': 
+            if label.text =='Instant':
                 deck.append('<span style=\"font-size: 14px;\"><b>Instant</b></span>')
                 card_count = kind.findAll('td', class_='decklist-builder-card-quantity-cell')
                 card_name = kind.findAll('td', class_='decklist-builder-card-name-cell')
                 for i in range(len(card_count)):
                     make_row(card_count[i], card_name[i], deck)
             #ランド
-            if label.text =='Land': 
+            if label.text =='Land':
                 deck.append('<span style=\"font-size: 14px;\"><b>Land</b></span>')
                 card_count = kind.findAll('td', class_='decklist-builder-card-quantity-cell')
                 card_name = kind.findAll('td', class_='decklist-builder-card-name-cell')
                 for i in range(len(card_count)):
                     make_row(card_count[i], card_name[i], deck)
             #サイドボード
-            if label.text =='Sideboard': 
+            if label.text =='Sideboard':
                 deck.append('<span style=\"font-size: 14px;\"><b>Sideboard</b></span>')
                 card_count = kind.findAll('td', class_='decklist-builder-card-quantity-cell')
                 card_name = kind.findAll('td', class_='decklist-builder-card-name-cell')

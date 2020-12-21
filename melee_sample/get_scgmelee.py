@@ -29,8 +29,6 @@ for i in range(10):
     bc_value = browser.find_element_by_id("svg-inline--fa fa-user fa-w-14 mr-1").text
     print(bc_value)
 
-
-
 # セッション開始
 session = HTMLSession()
 r = session.get(melee)
