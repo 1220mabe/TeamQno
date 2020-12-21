@@ -1,7 +1,6 @@
 # カテゴリ名とメディアIDをリターンする。
 # メディアIDは'https://teamqno.work/wp-admin/upload.php'にアップロードされている画像を指定している
 
-
 #スタンダード
 def check_arc_stan(deck):
     decktext = ",".join(deck)
@@ -21,7 +20,6 @@ def check_arc_stan(deck):
     if "Spawn of Mayhem" in decktext and "Rankle, Master of Pranks" in decktext:
         deckname = "Mono-Black"
         media_id = 377   #Rankle, Master of Pranks
-
     #2色
     if "Shatter the Sky" in decktext and "Teferi, Time Raveler" in decktext:
         deckname = "Azorius Control"
@@ -195,7 +193,6 @@ def check_arc_hist(deck):
     if "Paradox Engine" in decktext and "Mox Amber" in decktext and "Escape to the Wilds" in decktext:
         deckname = "Temur Paradox"
         media_id = 11591   #Temur Paradox
-
     #4色
     if "Uro, Titan of Nature’s Wrath" in decktext and "Yasharn, Implacable Earth" in decktext:
         deckname = "Four-color Control"
@@ -207,10 +204,8 @@ def check_arc_hist(deck):
     #5色
     if "Golos, Tireless Pilgrim" in decktext  and "Field of the Dead" in decktext:
         deckname = "Five-color Golos"
-        media_id = 2537   #Golos, Tireless PilgrimPcom
-
+        media_id = 2537   #Golos, Tireless Pilgrim
     return deckname,media_id
-
 
 
 #パイオニア

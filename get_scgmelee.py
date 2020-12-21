@@ -14,14 +14,10 @@ from requests_html import HTMLSession
 
 melee = "https://mtgmelee.com/Tournament/View/2402#standings"
 
-
 # target_html = requests.get(target_url).text
 # root = lxml.html.fromstring(target_html)
 # #text_content()メソッドはそのタグ以下にあるすべてのテキストを取得する
 # root.cssselect('#past-results-table >tbody>tbody').text_content()
-
-
-
 
 
 browser = webdriver.Chrome()

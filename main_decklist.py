@@ -217,7 +217,6 @@ def to_csv_mo(url, filename,filename_,title,category):
     return TweetUrl
 
 
-
 # デッキリストポストとcsv作成
 #スタンダード
 title = stdlea + tdyesterday.strftime('-%Y-%m-%d')
