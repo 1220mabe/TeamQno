@@ -19,7 +19,6 @@ melee = "https://mtgmelee.com/Tournament/View/2402#standings"
 # #text_content()メソッドはそのタグ以下にあるすべてのテキストを取得する
 # root.cssselect('#past-results-table >tbody>tbody').text_content()
 
-
 browser = webdriver.Chrome()
 browser.implicitly_wait(3)
 browser.get("https://mtgmelee.com/Tournament/Search?formats=Standard,Pioneer,Historic&date=Last7Days")
