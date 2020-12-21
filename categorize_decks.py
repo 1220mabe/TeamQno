@@ -93,7 +93,7 @@ def check_arc_stan(deck):
         deckname = "Esper Doom"
         media_id = 11435   #Hydroid Krasis
 
-        
+
 
     return deckname,media_id
 
@@ -200,13 +200,18 @@ def check_arc_hist(deck):
     if "Uro, Titan of Nature’s Wrath" in decktext and "Yasharn, Implacable Earth" in decktext:
         deckname = "Four-color Control"
         media_id = 11593   #Yasharn, Implacable Earth
+    if "Uro, Titan of Nature’s Wrath" in decktext and "Teferi, Time Raveler" in decktext "Fatal Push" in decktext:
+        deckname = "Four-color Control"
+        media_id = 592   #Uro, Titan of Nature’s Wrath
 
     #5色
     if "Golos, Tireless Pilgrim" in decktext  and "Field of the Dead" in decktext:
         deckname = "Five-color Golos"
-        media_id = 2537   #Golos, Tireless Pilgrim
+        media_id = 2537   #Golos, Tireless PilgrimPcom
 
     return deckname,media_id
+
+
 
 #パイオニア
 def check_arc_pion(deck):
@@ -250,7 +255,7 @@ def check_arc_pion(deck):
         media_id = 709   #Teferi, Time Raveler
     if "Lurrus of the Dream-Den" in decktext and "Hateful Eidolon" in decktext:
         deckname = "Orzhov Auras"
-        media_id = 11441   #Sram, Senior Edificer 
+        media_id = 11441   #Sram, Senior Edificer
     if "Boros Charm" in decktext and "Eidolon of the Great Revel" in decktext:
         deckname = "Boros Burn"
         media_id = 1941   #Eidolon of the Great Revel
@@ -337,7 +342,6 @@ def check_arc_pion(deck):
     if "Balustrade Spy" in decktext:
         deckname = "The Spy"
         media_id = 11438   #Four-Color Omnath
-
 
     #4色
     if "Omnath, Locus of Creation" in decktext and "Genesis Ultimatum" in decktext:
