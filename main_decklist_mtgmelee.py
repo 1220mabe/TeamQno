@@ -12,7 +12,6 @@ from urllib.request import urlopen
 from selenium import webdriver
 import time
 
-
 today =  datetime.today()
 yesterday = today - timedelta(days=1)
 dbyesterday = today - timedelta(days=2)
@@ -45,7 +44,7 @@ def get_list(deck_url):
     soup = BeautifulSoup(r.content, "html.parser")
 
     #MTGAテキスト
-    deck_arena = soup.find('textarea', class_='decklist-builder-copy-field form-control mt-2').text
+    deck_arena = soup.find('textarea', class_='decklist-builder-copy-field form-control mt-2')
 
     #プレイヤー名
     player_name = soup.find('span', class_='decklist-card-title-author')
@@ -176,23 +175,11 @@ def get_list(deck_url):
     if os.path.getsize(DeckPath + txtfile) <= 0:
         os.remove(DeckPath + txtfile)
 
-
-
-browser = webdriver.PhantomJS()
-browser.implicitly_wait(3)
-browser.get("https://mtgmelee.com/Tournament/Search?formats=Standard,Pioneer,Historic&date=Last7Days")
-
-for i in range(10):
-    # 3秒ごとに取得
-    time.sleep(3)
-    bc_value = browser.find_element_by_id("svg-inline--fa fa-user fa-w-14 mr-1").text
-    print(bc_value)
-
-#get_list(r'https://mtgmelee.com/Decklist/View/36942')
+# URL引数で1デッキはアップロード可能
+get_list(r'https://mtgmelee.com/Decklist/View/87420')
 
 
 # デッキリストポストとcsv作成
 # https://mtgmelee.com/Decklist/View/34981
-
 
 print("---------------End getting MTG Melee List--------------------")

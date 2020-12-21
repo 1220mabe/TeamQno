@@ -139,8 +139,8 @@ def get_graph_pion(weeks_ago):
 
 
 # 実行
-get_graph_stan(one_weeks_ago)
-#get_graph_hist(one_weeks_ago)
-get_graph_pion(one_weeks_ago)
+#get_graph_stan(one_weeks_ago)
+get_graph_hist(one_weeks_ago)
+#get_graph_pion(one_weeks_ago)
 # get_graph_pion(two_weeks_ago)
 # get_graph_pion(three_weeks_ago)

@@ -9,15 +9,15 @@ def check_arc_stan(deck):
     deckname = "Rogue"
 
     #1色
-    if "Anax, Hardened in the Forge" in decktext:
+    if "Fervent Champion" in decktext:
         deckname = "Mono-Red"
-        media_id = 1933   #Anax, Hardened in the Forge
+        media_id = 11434   #Fervent Champion
     if "Vivien, Arkbow Ranger" in decktext:
         deckname = "Mono-Green"
         media_id = 1934   #Vivien, Arkbow Ranger
-    if "The Great Henge" in decktext:
+    if "The Great Henge" in decktext and "Wicked Wolf" in decktext:
         deckname = "Mono-Green"
-        media_id = 1935   #The Great Henge
+        media_id = 11433   #Wicked Wolf
     if "Spawn of Mayhem" in decktext and "Rankle, Master of Pranks" in decktext:
         deckname = "Mono-Black"
         media_id = 377   #Rankle, Master of Pranks
@@ -47,6 +47,13 @@ def check_arc_stan(deck):
     if "Season of Growth" in decktext and "Karametra’s Blessing" in decktext:
         deckname = "Selesnya Aggro"
         media_id = 1937   #Season of Growth
+    if "Edgewall Innkeeper" in decktext and "Bonecrusher Giant" in decktext:
+        deckname = "Gruul Adventures"
+        media_id = 11431   #Bonecrusher Giant
+    if "Lurrus of the Dream-Den" in decktext and "Soaring Thought-Thief" in decktext:
+        deckname = "Dimir Rogue"
+        media_id = 11432   #Soaring Thought-Thief
+
 
     #3色
     if "Mayhem Devil" in decktext and "Gilded Goose" in decktext:
@@ -55,6 +62,9 @@ def check_arc_stan(deck):
     if "Expansion // Explosion" in decktext and "Wilderness Reclamation" in decktext:
         deckname = "Temur Reclamation"
         media_id = 369   #Wilderness Reclamation
+    if "Genesis Ultimatum" in decktext:
+        deckname = "Temur Ramp"
+        media_id = 11436   #Genesis Ultimatum
     if "Uro, Titan of Nature’s Wrath" in decktext and "Teferi, Time Raveler" in decktext:
         deckname = "Bant Ramp"
         media_id = 592   #Uro, Titan of Nature’s Wrath
@@ -79,6 +89,10 @@ def check_arc_stan(deck):
     if "Hydroid Krasis" in decktext and "Heartless Act" in decktext:
         deckname = "Sultai Control"
         media_id = 2284   #Hydroid Krasis
+    if "Omen of the Sea" in decktext and "Doom Foretold" in decktext:
+        deckname = "Esper Doom"
+        media_id = 11435   #Hydroid Krasis
+
         
 
     return deckname,media_id
@@ -135,8 +149,11 @@ def check_arc_hist(deck):
         deckname = "Selesnya Aggro"
         media_id = 1937   #Season of Growth
     if "Lukka, Coppercoat Outcast" in decktext and "Craterhoof Behemoth" in decktext:
-        deckname = "Lukka, Coppercoat Outcast"
+        deckname = "Lukka Combo"
         media_id = 2472   #Lukka, Coppercoat Outcast
+    if "Lurrus of the Dream-Den" in decktext and "Dreadhorde Arcanist" in decktext:
+        deckname = "Rakdos Arcanist"
+        media_id = 11597   #Dreadhorde Arcanist
 
     #3色
     if "Mayhem Devil" in decktext and "Gilded Goose" in decktext:
@@ -166,8 +183,8 @@ def check_arc_hist(deck):
     if "Uro, Titan of Nature’s Wrath" in decktext and "Liliana, Waker of the Dead" in decktext:
         deckname = "Sultai Control"
         media_id = 2176   #Liliana, Waker of the Dead
-    if "Hydroid Krasis" in decktext and "Heartless Act" in decktext:
-        deckname = "Sultai Control"
+    if "Hydroid Krasis" in decktext and "Fatal Push" in decktext:
+        deckname = "Sultai Midrange"
         media_id = 2284   #Hydroid Krasis
     if "Kethis, the Hidden Hand" in decktext and "Mox Amber" in decktext:
         deckname = "Kethis Combo"
@@ -175,6 +192,14 @@ def check_arc_hist(deck):
     if "Underworld Breach" in decktext and "Mox Amber" in decktext:
         deckname = "Breach Combo"
         media_id = 866   #Underworld Breach
+    if "Paradox Engine" in decktext and "Mox Amber" in decktext and "Escape to the Wilds" in decktext:
+        deckname = "Temur Paradox"
+        media_id = 11591   #Temur Paradox
+
+    #4色
+    if "Uro, Titan of Nature’s Wrath" in decktext and "Yasharn, Implacable Earth" in decktext:
+        deckname = "Four-color Control"
+        media_id = 11593   #Yasharn, Implacable Earth
 
     #5色
     if "Golos, Tireless Pilgrim" in decktext  and "Field of the Dead" in decktext:
@@ -202,9 +227,17 @@ def check_arc_pion(deck):
     if "Torbran, Thane of Red Fell" in decktext:
         deckname = "Mono-Red"
         media_id = 691   #Torbran, Thane of Red Fell
+    if "Collective Defiance" in decktext:
+        deckname = "Mono-Red"
+        media_id = 11444   #Collective Defiance
+
     if "Goblin Piledriver" in decktext:
         deckname = "Mono-Red Goblin"
         media_id = 2169   #Goblin Piledriver
+    if "Karn, the Great Creator" in decktext and "Nissa, Who Shakes the World" in decktext:
+        deckname = "Mono-Green Planeswalkers"
+        media_id = 11439   #Goblin Piledriver
+
     #2色
     if "Inverter of Truth" in decktext and "Thassa's Oracle" in decktext:
         deckname = "Dimir Inverter"
@@ -217,7 +250,7 @@ def check_arc_pion(deck):
         media_id = 709   #Teferi, Time Raveler
     if "Lurrus of the Dream-Den" in decktext and "Hateful Eidolon" in decktext:
         deckname = "Orzhov Auras"
-        media_id = 586   #Lurrus of the Dream-Den
+        media_id = 11441   #Sram, Senior Edificer 
     if "Boros Charm" in decktext and "Eidolon of the Great Revel" in decktext:
         deckname = "Boros Burn"
         media_id = 1941   #Eidolon of the Great Revel
@@ -257,6 +290,9 @@ def check_arc_pion(deck):
     if "Vraska, Golgari Queen" in decktext and "Traverse the Ulvenwald" in decktext:
         deckname = "Golgari Delirium"
         media_id = 2916   #Vraska, Golgari Queen
+    if "Lurrus of the Dream-Den" in decktext and "Chained to the Rocks" in decktext  and "Soul-Scar Mage" in decktext:
+        deckname = "Boros Burn"
+        media_id = 11442   #Soul-Scar Mage
 
     #3色
     if "Traverse the Ulvenwald" in decktext and "Thoughtseize" in decktext and "Jace, Vryn's Prodigy" in decktext:
@@ -280,6 +316,9 @@ def check_arc_pion(deck):
     if "Underworld Breach" in decktext and "Lotus Field" in decktext:
         deckname = "Lotus Breach"
         media_id = 866   #Underworld Breach
+    if "Vizier of Tumbling Sands" in decktext and "Lotus Field" in decktext:
+        deckname = "Lotus Combo"
+        media_id = 11445   #Underworld Breach
     if "Expansion // Explosion" in decktext and "Wilderness Reclamation" in decktext:
         deckname = "Temur Reclamation"
         media_id = 1947   #Expansion // Explosion
@@ -292,9 +331,22 @@ def check_arc_pion(deck):
     if "Kethis, the Hidden Hand" in decktext and "Mox Amber" in decktext:
         deckname = "Kethis Combo"
         media_id = 2384   #Kethis, the Hidden Hand
+    if "Kethis, the Hidden Hand" in decktext and "Mox Amber" in decktext:
+        deckname = "Kethis Combo"
+        media_id = 2384   #Kethis, the Hidden Hand
+    if "Balustrade Spy" in decktext:
+        deckname = "The Spy"
+        media_id = 11438   #Four-Color Omnath
+
+
+    #4色
+    if "Omnath, Locus of Creation" in decktext and "Genesis Ultimatum" in decktext:
+        deckname = "Four-Color Omnath"
+        media_id = 11437   #Four-Color Omnath
+
     #5色
     if "Niv-Mizzet Reborn" in decktext:
         deckname = "Niv to Light"
-        media_id = 589   #Niv-Mizzet Reborn
+        media_id = 11443   #Niv-Mizzet Reborn
 
     return deckname,media_id
