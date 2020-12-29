@@ -18,6 +18,8 @@ csvfile = ".csv"
 txtfile = ".txt"
 DeckPath = "E:\\TeamQno\\Decks\\"
 
+formatlist = ['Standard', 'Historic','Pioneer']
+
 def get_list(deck_url):
     # ブラウザのオプションを格納する変数をもらってきます。
     options = Options()
@@ -32,23 +34,53 @@ def get_list(deck_url):
 
     # URLにアクセスする 戻り値にはアクセスした結果やHTMLなどが入ったinstanceが帰ってきます
     soup = BeautifulSoup(deck_url, "html.parser")
-    print(soup)
 
-    #MTGAテキスト
-    #deck_arena = soup.find('textarea', class_='decklist-builder-copy-field form-control mt-2')
+    #print(tbody)
+    urllist = []
+    tbody = soup.select(".odd")
+    #開催大会ループ 奇数
+    for trow in tbody:
+        decklists = trow.find('td', class_='Decklists-column').text
+        if int(decklists) >= 20:
+            format = trow.find('td', class_='Format-column').text
+            if format in formatlist:
+                #URL作成
+                url = trow.find('a')
+                # getでリンク要素のhref属性の値を取得して出力
+                print(url.get('href'))
+                urllist.append(u'https://mtgmelee.com/' + url.get('href'))
 
-    #プレイヤー名
-    #player_name = soup.find('span', class_='decklist-card-title-author')
-    #print(player_name.text.replace('by ', ''))
-    #フォーマット
-    #forma  = soup.findAll('div', class_='decklist-card-info mr-3')
-    #category = forma[1].text.strip()
-    #print(category)
-    #大会名
-    #tournament_name = soup.find('div', class_='decklist-card-info-tournament mr-3')
-    #print(tournament_name.text.strip())
+    tbody = soup.select(".even")
+
+    #開催大会ループ 偶数
+    for trow in tbody:
+        decklists = trow.find('td', class_='Decklists-column').text
+        if int(decklists) >= 20:
+            format = trow.find('td', class_='Format-column').text
+            if format in formatlist:
+                #URL作成
+                url = trow.find('a')
+                # getでリンク要素のhref属性の値を取得して出力
+                print(url.get('href'))
+                urllist.append(u'https://mtgmelee.com/' + url.get('href'))
+
+    # ドライバーを終了させる
+    driver.close()
+    driver.quit()
+    print(urllist)
+
+        #<tbody>
+        #<tr class="even" role="row">
+        #<td class="StartDate-column sorting_1">Last Saturday at 10:00 AM JST</td>
+        #<td class="Name-column"><a href="/Tournament/View/4481#standings">日本選手権2020冬　本戦</a></td>
+        #<td class="OrganizationName-column"><a href="/Organization/View/678">BIG MAGIC</a></td>
+        #<td class="Format-column">Historic</td>
+        #<td class="Decklists-column"><a href="/Tournament/View/4481#standings">126</a></td>
+        #</tr>
+        #</tbody>
 
 # URL引数で1デッキはアップロード可能
-get_list(r'https://mtgmelee.com/Tournament/Search?formats=Standard,Historic,Pioneer&date=Last7Days')
+get_list(r'https://mtgmelee.com/Tournaments')
+
 
 print("---------------End getting MTG Melee List--------------------")
