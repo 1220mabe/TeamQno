@@ -1,5 +1,5 @@
 # coding: UTF-8
-print("---------------Start getting MTG Melee List------------------")
+print("---------------Start getting MTG Melee TournamentList------------------")
 
 import requests
 import urllib
@@ -20,7 +20,7 @@ DeckPath = "E:\\TeamQno\\Decks\\"
 
 formatlist = ['Standard', 'Historic','Pioneer']
 
-def get_list(deck_url):
+def get_tournamentlist(deck_url):
     # ブラウザのオプションを格納する変数をもらってきます。
     options = Options()
     # Headlessモードを有効にする（コメントアウトするとブラウザが実際に立ち上がります）
@@ -67,7 +67,9 @@ def get_list(deck_url):
     # ドライバーを終了させる
     driver.close()
     driver.quit()
-    print(urllist)
+    urllist.reverse()
+    #print(urllist)
+    return(urllist)
 
         #<tbody>
         #<tr class="even" role="row">
@@ -80,7 +82,7 @@ def get_list(deck_url):
         #</tbody>
 
 # URL引数で1デッキはアップロード可能
-get_list(r'https://mtgmelee.com/Tournaments')
+#get_list(r'https://mtgmelee.com/Tournaments')
 
 
-print("---------------End getting MTG Melee List--------------------")
+print("---------------End getting MTG Melee TournamentList--------------------")

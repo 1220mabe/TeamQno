@@ -37,7 +37,7 @@ def make_row(count, name,decklist):
     decklist.append(row_str)
     return
 
-def get_list(deck_url):
+def get_and_postlist(deck_url):
     r = requests.get(deck_url)
     soup = BeautifulSoup(r.content, "html.parser")
 
@@ -140,7 +140,6 @@ def get_list(deck_url):
     deck.append("</center>")
     print(deck)
 
-
     #アーキタイプカテゴライズ
     results =[2]
     if category == categorystan:
@@ -174,7 +173,7 @@ def get_list(deck_url):
         os.remove(DeckPath + txtfile)
 
 # URL引数で1デッキはアップロード可能
-get_list(r'https://mtgmelee.com/Decklist/View/87420')
+#get_list(r'https://mtgmelee.com/Decklist/View/87420')
 
 
 # デッキリストポストとcsv作成
