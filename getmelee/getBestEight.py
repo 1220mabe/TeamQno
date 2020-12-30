@@ -16,7 +16,7 @@ def get_meleedecklist(deck_url):
     # Headlessモードを有効にする（コメントアウトするとブラウザが実際に立ち上がります）
     options.set_headless(True)
     # ブラウザを起動する
-    driver = webdriver.Chrome(executable_path='/Users/masaruabe/Downloads/chromedriver')
+    driver = webdriver.Chrome()
     # ブラウザでアクセスする
     driver.get(deck_url)
     # HTMLを文字コードをUTF-8に変換してから取得します。
@@ -138,7 +138,7 @@ def get_meleedecklist(deck_url):
     for trow in tbody:
         if trow.find('td', class_='Rank-column sorting_1'):
             rank = trow.find('td', class_='Rank-column sorting_1').text
-            if rank == '7':
+            if rank == '8':
                 #URL作成
                 if trow.find('td', class_='Decklists-column'):
                     column = trow.find('td', class_='Decklists-column')
