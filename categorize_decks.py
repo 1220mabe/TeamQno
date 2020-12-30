@@ -1,3 +1,4 @@
+
 # カテゴリ名とメディアIDをリターンする。
 # メディアIDは'https://teamqno.work/wp-admin/upload.php'にアップロードされている画像を指定している
 # 画像は220 x 160
@@ -8,6 +9,54 @@ def check_arc_stan(deck):
     decktext = ",".join(deck)
     media_id = 12415   #密輸人の回転翼機
     deckname = "Rogue"
+
+    # 2色全般(ショックランド)
+    if "Plains" in decktext and "Island" in decktext:
+        deckname = "UW"
+        media_id = 12400
+    if "Swamp" in decktext and "Island" in decktext:
+        deckname = "UB"
+        media_id = 12401
+    if "Mountain" in decktext and "Swamp" in decktext:
+        deckname = "RB"
+        media_id = 12402
+    if "Mountain" in decktext and "Forest" in decktext:
+        deckname = "RG"
+        media_id = 12403
+    if "Plains" in decktext and "Forest" in decktext:
+        deckname = "GW"
+        media_id = 12404
+    if "Plains" in decktext and "Swamp" in decktext:
+        deckname = "BW"
+        media_id = 12405
+    if "Mountain" in decktext and "Island" in decktext:
+        deckname = "UR"
+        media_id = 12406
+    if "Swamp" in decktext and "Forest" in decktext:
+        deckname = "BG"
+        media_id = 12407
+    if "Mountain" in decktext and "Plains" in decktext:
+        deckname = "RW"
+        media_id = 12408
+    if "Forest" in decktext and "Island" in decktext:
+        deckname = "GU"
+        media_id = 12409
+    # 3色全般(トライランド)
+    if "Plains" in decktext and "Swamp" in decktext and "Swamp" in decktext:
+        deckname = "BGW"
+        media_id = 12410
+    if "Plains" in decktext and "Mountain" in decktext and "Island" in decktext:
+        deckname = "URW"
+        media_id = 12411
+    if "Forest" in decktext and "Swamp" in decktext and "Island" in decktext:
+        deckname = "BGU"
+        media_id = 12412
+    if "Mountain" in decktext and "Swamp" in decktext and "Plains" in decktext:
+        deckname = "BRU"
+        media_id = 12413
+    if "Mountain" in decktext and "Forest" in decktext and "Island" in decktext:
+        deckname = "RGU"
+        media_id = 12414
 
     #1色
     if "Fervent Champion" in decktext:
@@ -54,38 +103,6 @@ def check_arc_stan(deck):
         deckname = "Dimir Rogue"
         media_id = 11432   #Soaring Thought-Thief
 
-    # 2色全般(ショックランド)
-    if "Plains" in decktext and "Island" in decktext:
-        deckname = "UW"
-        media_id = 12400
-    if "Swamp" in decktext and "Island" in decktext:
-        deckname = "UB"
-        media_id = 12401
-    if "Mountain" in decktext and "Swamp" in decktext:
-        deckname = "RB"
-        media_id = 12402
-    if "Mountain" in decktext and "Forest" in decktext:
-        deckname = "RG"
-        media_id = 12403
-    if "Plains" in decktext and "Forest" in decktext:
-        deckname = "GW"
-        media_id = 12404
-    if "Plains" in decktext and "Swamp" in decktext:
-        deckname = "BW"
-        media_id = 12405
-    if "Mountain" in decktext and "Island" in decktext:
-        deckname = "UR"
-        media_id = 12406
-    if "Swamp" in decktext and "Forest" in decktext:
-        deckname = "BG"
-        media_id = 12407
-    if "Mountain" in decktext and "Plains" in decktext:
-        deckname = "RW"
-        media_id = 12408
-    if "Forest" in decktext and "Island" in decktext:
-        deckname = "GU"
-        media_id = 12409
-
 
     #3色
     if "Mayhem Devil" in decktext and "Gilded Goose" in decktext:
@@ -124,22 +141,6 @@ def check_arc_stan(deck):
     if "Omen of the Sea" in decktext and "Doom Foretold" in decktext:
         deckname = "Esper Doom"
         media_id = 11435   #Hydroid Krasis
-    # 3色全般(トライランド)
-    if "Plains" in decktext and "Swamp" in decktextand "Swamp" in decktext:
-        deckname = "BGW"
-        media_id = 12410
-    if "Plains" in decktext and "Mountain" in decktextand "Island" in decktext:
-        deckname = "URW"
-        media_id = 12411
-    if "Forest" in decktext and "Swamp" in decktextand "Island" in decktext:
-        deckname = "BGU"
-        media_id = 12412
-    if "Mountain" in decktext and "Swamp" in decktextand "Plains" in decktext:
-        deckname = "BRU"
-        media_id = 12413
-    if "Mountain" in decktext and "Forest" in decktextand "Island" in decktext:
-        deckname = "RGU"
-        media_id = 12414
 
 
     return deckname,media_id
@@ -149,6 +150,54 @@ def check_arc_hist(deck):
     decktext = ",".join(deck)
     media_id = 12415   #密輸人の回転翼機
     deckname = "Rogue"
+
+    # 2色全般(ショックランド)
+    if "Plains" in decktext and "Island" in decktext:
+        deckname = "UW"
+        media_id = 12400
+    if "Swamp" in decktext and "Island" in decktext:
+        deckname = "UB"
+        media_id = 12401
+    if "Mountain" in decktext and "Swamp" in decktext:
+        deckname = "RB"
+        media_id = 12402
+    if "Mountain" in decktext and "Forest" in decktext:
+        deckname = "RG"
+        media_id = 12403
+    if "Plains" in decktext and "Forest" in decktext:
+        deckname = "GW"
+        media_id = 12404
+    if "Plains" in decktext and "Swamp" in decktext:
+        deckname = "BW"
+        media_id = 12405
+    if "Mountain" in decktext and "Island" in decktext:
+        deckname = "UR"
+        media_id = 12406
+    if "Swamp" in decktext and "Forest" in decktext:
+        deckname = "BG"
+        media_id = 12407
+    if "Mountain" in decktext and "Plains" in decktext:
+        deckname = "RW"
+        media_id = 12408
+    if "Forest" in decktext and "Island" in decktext:
+        deckname = "GU"
+        media_id = 12409
+    # 3色全般(トライランド)
+    if "Plains" in decktext and "Swamp" in decktext and "Swamp" in decktext:
+        deckname = "BGW"
+        media_id = 12410
+    if "Plains" in decktext and "Mountain" in decktext and "Island" in decktext:
+        deckname = "URW"
+        media_id = 12411
+    if "Forest" in decktext and "Swamp" in decktext and "Island" in decktext:
+        deckname = "BGU"
+        media_id = 12412
+    if "Mountain" in decktext and "Swamp" in decktext and "Plains" in decktext:
+        deckname = "BRU"
+        media_id = 12413
+    if "Mountain" in decktext and "Forest" in decktext and "Island" in decktext:
+        deckname = "RGU"
+        media_id = 12414
 
     #1色
     if "Anax, Hardened in the Forge" in decktext:
@@ -201,38 +250,6 @@ def check_arc_hist(deck):
     if "Lurrus of the Dream-Den" in decktext and "Dreadhorde Arcanist" in decktext:
         deckname = "Rakdos Arcanist"
         media_id = 11597   #Dreadhorde Arcanist
-    # 2色全般(ショックランド)
-    if "Plains" in decktext and "Island" in decktext:
-        deckname = "UW"
-        media_id = 12400
-    if "Swamp" in decktext and "Island" in decktext:
-        deckname = "UB"
-        media_id = 12401
-    if "Mountain" in decktext and "Swamp" in decktext:
-        deckname = "RB"
-        media_id = 12402
-    if "Mountain" in decktext and "Forest" in decktext:
-        deckname = "RG"
-        media_id = 12403
-    if "Plains" in decktext and "Forest" in decktext:
-        deckname = "GW"
-        media_id = 12404
-    if "Plains" in decktext and "Swamp" in decktext:
-        deckname = "BW"
-        media_id = 12405
-    if "Mountain" in decktext and "Island" in decktext:
-        deckname = "UR"
-        media_id = 12406
-    if "Swamp" in decktext and "Forest" in decktext:
-        deckname = "BG"
-        media_id = 12407
-    if "Mountain" in decktext and "Plains" in decktext:
-        deckname = "RW"
-        media_id = 12408
-    if "Forest" in decktext and "Island" in decktext:
-        deckname = "GU"
-        media_id = 12409
-
 
     #3色
     if "Mayhem Devil" in decktext and "Gilded Goose" in decktext:
@@ -276,30 +293,17 @@ def check_arc_hist(deck):
         media_id = 11591   #Temur Paradox
     if "Linvala, Shield of Sea Gate" in decktext and "Collected Company" in decktext:
         deckname = "Bant Company"
-        media_id = 12416   #Temur Paradox
+        media_id = 12416   #Linvala, Shield of Sea Gate
+    if "Uro, Titan of Nature’s Wrath" in decktext and "Nissa, Who Shakes the World" in decktext and "Extinction Event" in decktext:
+        deckname = "Sultai Control"
+        media_id = 592   #Uro, Titan of Nature’s Wrath
 
-    # 3色全般(トライランド)
-    if "Plains" in decktext and "Swamp" in decktextand "Swamp" in decktext:
-        deckname = "BGW"
-        media_id = 12410
-    if "Plains" in decktext and "Mountain" in decktextand "Island" in decktext:
-        deckname = "URW"
-        media_id = 12411
-    if "Forest" in decktext and "Swamp" in decktextand "Island" in decktext:
-        deckname = "BGU"
-        media_id = 12412
-    if "Mountain" in decktext and "Swamp" in decktextand "Plains" in decktext:
-        deckname = "BRU"
-        media_id = 12413
-    if "Mountain" in decktext and "Forest" in decktextand "Island" in decktext:
-        deckname = "RGU"
-        media_id = 12414
 
     #4色
     if "Uro, Titan of Nature’s Wrath" in decktext and "Yasharn, Implacable Earth" in decktext:
         deckname = "Four-color Control"
         media_id = 11593   #Yasharn, Implacable Earth
-    if "Uro, Titan of Nature’s Wrath" in decktext and "Teferi, Time Raveler" in decktext "Fatal Push" in decktext:
+    if "Uro, Titan of Nature’s Wrath" in decktext and "Teferi, Time Raveler" in decktext and "Fatal Push" in decktext:
         deckname = "Four-color Control"
         media_id = 592   #Uro, Titan of Nature’s Wrath
 
@@ -315,6 +319,54 @@ def check_arc_pion(deck):
     decktext = ",".join(deck)
     media_id = 12415   #密輸人の回転翼機
     deckname = "Rogue"
+
+    # 2色全般(ショックランド)
+    if "Plains" in decktext and "Island" in decktext:
+        deckname = "UW"
+        media_id = 12400
+    if "Swamp" in decktext and "Island" in decktext:
+        deckname = "UB"
+        media_id = 12401
+    if "Mountain" in decktext and "Swamp" in decktext:
+        deckname = "RB"
+        media_id = 12402
+    if "Mountain" in decktext and "Forest" in decktext:
+        deckname = "RG"
+        media_id = 12403
+    if "Plains" in decktext and "Forest" in decktext:
+        deckname = "GW"
+        media_id = 12404
+    if "Plains" in decktext and "Swamp" in decktext:
+        deckname = "BW"
+        media_id = 12405
+    if "Mountain" in decktext and "Island" in decktext:
+        deckname = "UR"
+        media_id = 12406
+    if "Swamp" in decktext and "Forest" in decktext:
+        deckname = "BG"
+        media_id = 12407
+    if "Mountain" in decktext and "Plains" in decktext:
+        deckname = "RW"
+        media_id = 12408
+    if "Forest" in decktext and "Island" in decktext:
+        deckname = "GU"
+        media_id = 12409
+    # 3色全般(トライランド)
+    if "Plains" in decktext and "Swamp" in decktext and "Swamp" in decktext:
+        deckname = "BGW"
+        media_id = 12410
+    if "Plains" in decktext and "Mountain" in decktext and "Island" in decktext:
+        deckname = "URW"
+        media_id = 12411
+    if "Forest" in decktext and "Swamp" in decktext and "Island" in decktext:
+        deckname = "BGU"
+        media_id = 12412
+    if "Mountain" in decktext and "Swamp" in decktext and "Plains" in decktext:
+        deckname = "BRU"
+        media_id = 12413
+    if "Mountain" in decktext and "Forest" in decktext and "Island" in decktext:
+        deckname = "RGU"
+        media_id = 12414
 
     #1色
     if "Champion of Dusk" in decktext:
@@ -376,7 +428,7 @@ def check_arc_pion(deck):
         media_id = 591   #"Supreme Phantom
     if "Uro, Titan of Nature's Wrath" in decktext and "Wilderness Reclamation" in decktext:
         deckname = "Simic Reclamation"
-        media_id = 369   #Wilderness Reclamation
+        media_id = 592   #Uro, Titan of Nature’s Wrath
     if "Kroxa, Titan of Death's Hunger" in decktext and "Young Pyromancer" in decktext:
         deckname = "Rakdos Aggro"
         media_id = 1893   #Kroxa, Titan of Death's Hunger
@@ -395,38 +447,12 @@ def check_arc_pion(deck):
     if "Lurrus of the Dream-Den" in decktext and "Chained to the Rocks" in decktext  and "Soul-Scar Mage" in decktext:
         deckname = "Boros Burn"
         media_id = 11442   #Soul-Scar Mage
-    # 2色全般(ショックランド)
-    if "Plains" in decktext and "Island" in decktext:
-        deckname = "UW"
-        media_id = 12400
-    if "Swamp" in decktext and "Island" in decktext:
-        deckname = "UB"
-        media_id = 12401
-    if "Mountain" in decktext and "Swamp" in decktext:
-        deckname = "RB"
-        media_id = 12402
-    if "Mountain" in decktext and "Forest" in decktext:
-        deckname = "RG"
-        media_id = 12403
-    if "Plains" in decktext and "Forest" in decktext:
-        deckname = "GW"
-        media_id = 12404
-    if "Plains" in decktext and "Swamp" in decktext:
-        deckname = "BW"
-        media_id = 12405
-    if "Mountain" in decktext and "Island" in decktext:
-        deckname = "UR"
-        media_id = 12406
-    if "Swamp" in decktext and "Forest" in decktext:
-        deckname = "BG"
-        media_id = 12407
-    if "Mountain" in decktext and "Plains" in decktext:
-        deckname = "RW"
-        media_id = 12408
-    if "Forest" in decktext and "Island" in decktext:
-        deckname = "GU"
-        media_id = 12409
-
+    if "Uro, Titan of Nature’s Wrath" in decktext and "Nissa, Who Shakes the World" in decktext and "Extinction Event" in decktext:
+        deckname = "Sultai Control"
+        media_id = 592   #Uro, Titan of Nature’s Wrath
+    if "Uro, Titan of Nature’s Wrath" in decktext and "Wilderness Reclamation" in decktext and "Extinction Event" in decktext:
+        deckname = "Sultai Control"
+        media_id = 592   #Uro, Titan of Nature’s Wrath
 
     #3色
     if "Traverse the Ulvenwald" in decktext and "Thoughtseize" in decktext and "Jace, Vryn's Prodigy" in decktext:
@@ -471,22 +497,7 @@ def check_arc_pion(deck):
     if "Balustrade Spy" in decktext:
         deckname = "The Spy"
         media_id = 11438   #Four-Color Omnath
-    # 3色全般(トライランド)
-    if "Plains" in decktext and "Swamp" in decktextand "Swamp" in decktext:
-        deckname = "BGW"
-        media_id = 12410
-    if "Plains" in decktext and "Mountain" in decktextand "Island" in decktext:
-        deckname = "URW"
-        media_id = 12411
-    if "Forest" in decktext and "Swamp" in decktextand "Island" in decktext:
-        deckname = "BGU"
-        media_id = 12412
-    if "Mountain" in decktext and "Swamp" in decktextand "Plains" in decktext:
-        deckname = "BRU"
-        media_id = 12413
-    if "Mountain" in decktext and "Forest" in decktextand "Island" in decktext:
-        deckname = "RGU"
-        media_id = 12414
+
     #4色
     if "Omnath, Locus of Creation" in decktext and "Genesis Ultimatum" in decktext:
         deckname = "Four-Color Omnath"
