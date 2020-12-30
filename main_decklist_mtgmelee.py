@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*
 print("---------------Start getting MTG Melee List------------------")
 
 import os
@@ -6,6 +7,8 @@ import csv
 import re
 import categorize_decks
 import post_article
+import unicodedata
+import pykakasi
 from datetime import datetime, date, timedelta
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
@@ -27,6 +30,47 @@ csvfile = ".csv"
 txtfile = ".txt"
 DeckPath = "E:\\TeamQno\\Decks\\"
 
+
+def is_japanese(string):
+    for ch in string:
+        name = unicodedata.name(ch) 
+        if "CJK UNIFIED" in name \
+        or "HIRAGANA" in name \
+        or "KATAKANA" in name:
+            return True
+    return False
+
+def convert_to_romaji(text):
+    """
+    漢字仮名混じり文をローマ字に変換する
+
+    Parameters
+    ----------
+    text : str
+        ローマ字に変換したい漢字仮名交じり文
+
+    Returns
+    -------
+    result : str
+        ローマ字に変換した文字列
+
+    Notes
+    -------
+    下記サイトを参考に作成しました
+    https://github.com/miurahr/pykakasi  
+    """
+
+    kakasi = pykakasi.kakasi()
+    kakasi.setMode("H", "a")        # Hiragana to ascii
+    kakasi.setMode("K", "a")        # Katakana to ascii
+    kakasi.setMode("J", "a")        # Japanese to ascii
+    kakasi.setMode("r", "Hepburn")  # use Hepburn Roman table
+    kakasi.setMode("s", True)       # add space
+    kakasi.setMode("C", False)      # no capitalize
+    conv = kakasi.getConverter()
+    result = conv.do(text)
+    return result
+
 def make_row(count, name,decklist):
     card_count = str(count.text)
     card_name = str(name.text)
@@ -42,7 +86,11 @@ def get_and_postlist(deck_url):
     soup = BeautifulSoup(r.content, "html.parser")
 
     #MTGAテキスト
-    deck_arena = soup.find('textarea', class_='decklist-builder-copy-field form-control mt-2')
+    deck_arena = str(soup.find('button', class_='decklist-builder-copy-button btn-sm btn btn-card'))
+    d = deck_arena.replace('"', '')
+    b = d.replace('<button class=decklist-builder-copy-button btn-sm btn btn-card data-clipboard-text=','')
+    deck_arena_text = b.replace('\n data-toggle=tooltip title=Copy for MTG Arena type=submit><i class=fas fa-copy mr-2></i>Copy</button>','')
+    print(deck_arena_text)
 
     #プレイヤー名
     player_name = soup.find('span', class_='decklist-card-title-author')
@@ -126,10 +174,17 @@ def get_and_postlist(deck_url):
     deck.append("[/mtg_deck]")
 
     # MTGAtxtファイル存在チェック(ここでポスト判定)
-    txtfile= (tournament_name.text.strip() +" " + player_name.text.replace('by ', '') + ".txt").replace(' ', '-').replace('(', '').replace(')', '')
+    if is_japanese(tournament_name.text.strip()):
+        txtfile= convert_to_romaji(tournament_name.text.strip() +" " + player_name.text.replace('by ', '') + ".txt").replace(' ', '-').replace('(', '').replace(')', '')
+    else:
+        txtfile= (tournament_name.text.strip() +" " + player_name.text.replace('by ', '') + ".txt").replace(' ', '-').replace('(', '').replace(')', '')
+
     txtfile= txtfile.replace('#','-')
     txtfile= txtfile.replace('---','-')
     txtfile= txtfile.replace('--','-')
+    txtfile= txtfile.replace('*','')
+    txtfile= txtfile.replace('|','')
+    txtfile= txtfile.replace('　',' ')
     if os.path.exists(DeckPath + txtfile) and os.path.getsize(DeckPath +txtfile) > 0:
         return
     # MTGACode Botton作成
@@ -162,18 +217,19 @@ def get_and_postlist(deck_url):
     #ポスト(投稿)
     post_article.post_article('publish',post_title,post_title,'\r\n\r\n'.join(deck),category_list,title_list,media_id)
 
-    # MTGAtxtファイル追記
-    with open(DeckPath + txtfile, mode='w') as f:
-        f.writelines(deck_arena.replace('\n',''))
-    # MTGAtxtファイルクローズド
-    f.close()
-    # MTGAtxtファイルアップロード
-    post_article.post_txt(DeckPath+txtfile)
-    if os.path.getsize(DeckPath + txtfile) <= 0:
-        os.remove(DeckPath + txtfile)
+    #MTGAtxtファイル追記
+    if deck_arena:
+        with open(DeckPath + txtfile, mode='w') as f:
+            f.writelines(deck_arena_text.replace('\n',''))
+        # MTGAtxtファイルクローズド
+        f.close()
+        # MTGAtxtファイルアップロード
+        post_article.post_txt(DeckPath+txtfile)
+        if os.path.getsize(DeckPath + txtfile) <= 0:
+            os.remove(DeckPath + txtfile)
 
 # URL引数で1デッキはアップロード可能
-#get_list(r'https://mtgmelee.com/Decklist/View/87420')
+# get_and_postlist(r'https://mtgmelee.com/Decklist/View/88147')
 
 
 # デッキリストポストとcsv作成

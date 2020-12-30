@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*
 import main_decklist_mtgmelee
 import getmelee.getMtgmeleeTournament
 import getmelee.getBestEight
@@ -12,5 +13,5 @@ print(tournaments)
 for tournament in tournaments:
     decks = getmelee.getBestEight.get_meleedecklist(tournament)
     print(decks)
-    for decklist in decklists:
-        main_decklist_mtgmelee.get_and_post_list(decklist)
+    for decklist in decks:
+        main_decklist_mtgmelee.get_and_postlist(decklist)
