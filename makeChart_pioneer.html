@@ -11,6 +11,12 @@ request.onload = function () {
     data[i] = json[i].Count;
     labels[i] = json[i].Deck;
   };
+  var date = new Date();
+  date.setDate(date.getDate() - 1);
+  var yesterdayString = date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate()
+  date.setDate(date.getDate() - 7);
+  var eightagodayString = date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate()
+  var title = 'Pioneer Metagame '+ eightagodayString + ' - ' + yesterdayString
   var ctx = document.getElementById('PioneerChart').getContext('2d');
   var PioneerChart = new Chart(ctx, {
     type: 'horizontalBar',
@@ -29,11 +35,11 @@ request.onload = function () {
         title: {                          //タイトル設定
             display: true,                 //表示設定
             fontSize: 14,                  //フォントサイズ
-            text: 'Pioneer Metagame'      //ラベル
+            text:title      //ラベル
         },
         plugins: {
             colorschemes: {
-            scheme: 'brewer.Paired3'
+            scheme: 'brewer.RdPu3'
             }
         },
     }
