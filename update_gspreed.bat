@@ -1,0 +1,1 @@
+C:/Users/user/AppData/Local/Programs/Python/Python38-32/python.exe E:\Python\TeamQno/get_postlist.py

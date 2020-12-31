@@ -1,0 +1,45 @@
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+<script type="text/javascript" src="https://github.com/nagix/chartjs-plugin-colorschemes/releases/download/v0.2.0/chartjs-plugin-colorschemes.min.js"></script>
+<canvas id="StandardChart" style="padding: 0px 10px 0px 10px;"></canvas>
+<script>
+var request = new XMLHttpRequest();
+request.open('GET', 'https://script.google.com/macros/s/AKfycbzBeb6hYl9Z_hc0UdT4PcuI7Dkc-orNnh7qKQH2pZjAALXShwEW/exec', true);
+request.responseType = 'json';
+request.onload = function () {
+  var json = this.response;
+  var data = new Array(json.length);
+  var labels = new Array(json.length);
+  for(var i=0; i<data.length; i++){
+    data[i] = json[i].Count;
+    labels[i] = json[i].Deck;
+  };
+  var ctx = document.getElementById('StandardChart').getContext('2d');
+  var StandardChart = new Chart(ctx, {
+    type: 'horizontalBar',
+    data: {
+      labels: labels,
+      datasets:[{
+      label: "",
+      data: data,
+         }]
+      },
+      options: {
+       responsive: 'true',
+        legend: {
+            display: false
+        },
+        title: {                          //タイトル設定
+            display: true,                 //表示設定
+            fontSize: 14,                  //フォントサイズ
+            text: 'Standard Metagame'      //ラベル
+        },
+        plugins: {
+            colorschemes: {
+            scheme: 'brewer.Paired3'
+            }
+        },
+    }
+ });
+};
+request.send();
+</script>

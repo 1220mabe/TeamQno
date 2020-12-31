@@ -4,12 +4,32 @@
 # 画像は220 x 160
 
 
+
+
 #スタンダード
 def check_arc_stan(deck):
-    decktext = ",".join(deck)
+    #初期値
     media_id = 12415   #密輸人の回転翼機
     deckname = "Rogue"
+    decktext = ",".join(deck)
+    #check_arc_base(decktext)
 
+    # 1色全般(基本土地)
+    if "Island" in decktext:
+        deckname = "Mono-U"
+        media_id = 12730
+    if "Swamp" in decktext:
+        deckname = "Mono-B"
+        media_id = 12731
+    if "Plains" in decktext:
+        deckname = "Mono-W"
+        media_id = 12732
+    if "Mountain" in decktext:
+        deckname = "Mono-R"
+        media_id = 12733
+    if "Forest" in decktext:
+        deckname = "Mono-G"
+        media_id = 12734
     # 2色全般(ショックランド)
     if "Plains" in decktext and "Island" in decktext:
         deckname = "UW"
@@ -60,16 +80,16 @@ def check_arc_stan(deck):
 
     #1色
     if "Fervent Champion" in decktext:
-        deckname = "Mono-Red"
+        deckname = "Mono-R"
         media_id = 11434   #Fervent Champion
     if "Vivien, Arkbow Ranger" in decktext:
-        deckname = "Mono-Green"
+        deckname = "Mono-G"
         media_id = 1934   #Vivien, Arkbow Ranger
     if "The Great Henge" in decktext and "Wicked Wolf" in decktext:
-        deckname = "Mono-Green"
+        deckname = "Mono-G"
         media_id = 11433   #Wicked Wolf
     if "Spawn of Mayhem" in decktext and "Rankle, Master of Pranks" in decktext:
-        deckname = "Mono-Black"
+        deckname = "Mono-B"
         media_id = 377   #Rankle, Master of Pranks
     #2色
     if "Shatter the Sky" in decktext and "Teferi, Time Raveler" in decktext:
@@ -102,7 +122,6 @@ def check_arc_stan(deck):
     if "Lurrus of the Dream-Den" in decktext and "Soaring Thought-Thief" in decktext:
         deckname = "Dimir Rogue"
         media_id = 11432   #Soaring Thought-Thief
-
 
     #3色
     if "Mayhem Devil" in decktext and "Gilded Goose" in decktext:
@@ -142,15 +161,32 @@ def check_arc_stan(deck):
         deckname = "Esper Doom"
         media_id = 11435   #Hydroid Krasis
 
-
     return deckname,media_id
 
 #ヒストリック
 def check_arc_hist(deck):
-    decktext = ",".join(deck)
+    #初期値
     media_id = 12415   #密輸人の回転翼機
     deckname = "Rogue"
+    decktext = ",".join(deck)
+    #check_arc_base(decktext)
 
+    # 1色全般(基本土地)
+    if "Island" in decktext:
+        deckname = "Mono-U"
+        media_id = 12730
+    if "Swamp" in decktext:
+        deckname = "Mono-B"
+        media_id = 12731
+    if "Plains" in decktext:
+        deckname = "Mono-W"
+        media_id = 12732
+    if "Mountain" in decktext:
+        deckname = "Mono-R"
+        media_id = 12733
+    if "Forest" in decktext:
+        deckname = "Mono-G"
+        media_id = 12734
     # 2色全般(ショックランド)
     if "Plains" in decktext and "Island" in decktext:
         deckname = "UW"
@@ -301,25 +337,43 @@ def check_arc_hist(deck):
 
     #4色
     if "Uro, Titan of Nature’s Wrath" in decktext and "Yasharn, Implacable Earth" in decktext:
-        deckname = "Four-color Control"
+        deckname = "4C Control"
         media_id = 11593   #Yasharn, Implacable Earth
     if "Uro, Titan of Nature’s Wrath" in decktext and "Teferi, Time Raveler" in decktext and "Fatal Push" in decktext:
-        deckname = "Four-color Control"
+        deckname = "4C Control"
         media_id = 592   #Uro, Titan of Nature’s Wrath
 
     #5色
     if "Golos, Tireless Pilgrim" in decktext  and "Field of the Dead" in decktext:
-        deckname = "Five-color Golos"
+        deckname = "5C Golos"
         media_id = 2537   #Golos, Tireless Pilgrim
     return deckname,media_id
 
 
 #パイオニア
 def check_arc_pion(deck):
-    decktext = ",".join(deck)
+    #初期値
     media_id = 12415   #密輸人の回転翼機
     deckname = "Rogue"
+    decktext = ",".join(deck)
+    #check_arc_base(decktext)
 
+    # 1色全般(基本土地)
+    if "Island" in decktext:
+        deckname = "Mono-U"
+        media_id = 12730
+    if "Swamp" in decktext:
+        deckname = "Mono-B"
+        media_id = 12731
+    if "Plains" in decktext:
+        deckname = "Mono-W"
+        media_id = 12732
+    if "Mountain" in decktext:
+        deckname = "Mono-R"
+        media_id = 12733
+    if "Forest" in decktext:
+        deckname = "Mono-G"
+        media_id = 12734
     # 2色全般(ショックランド)
     if "Plains" in decktext and "Island" in decktext:
         deckname = "UW"
@@ -370,26 +424,26 @@ def check_arc_pion(deck):
 
     #1色
     if "Champion of Dusk" in decktext:
-        deckname = "Mono-Black Vampires"
+        deckname = "Mono-B Vampires"
         media_id = 851   #Rankle, Master of Pranks
     if "Spawn of Mayhem" in decktext:
-        deckname = "Mono-Black Aggro"
+        deckname = "Mono-B Aggro"
         media_id = 377   #Rankle, Master of Pranks
     if "Heliod, Sun-Crowned" in decktext:
-        deckname = "Mono-White Devotion"
+        deckname = "Mono-W Devotion"
         media_id = 590   #Heliod, Sun-Crowned
     if "Torbran, Thane of Red Fell" in decktext:
-        deckname = "Mono-Red"
+        deckname = "Mono-R"
         media_id = 691   #Torbran, Thane of Red Fell
     if "Collective Defiance" in decktext:
-        deckname = "Mono-Red"
+        deckname = "Mono-R"
         media_id = 11444   #Collective Defiance
 
     if "Goblin Piledriver" in decktext:
-        deckname = "Mono-Red Goblin"
+        deckname = "Mono-R Goblin"
         media_id = 2169   #Goblin Piledriver
     if "Karn, the Great Creator" in decktext and "Nissa, Who Shakes the World" in decktext:
-        deckname = "Mono-Green Planeswalkers"
+        deckname = "Mono-G PW"
         media_id = 11439   #Goblin Piledriver
 
     #2色
@@ -447,12 +501,6 @@ def check_arc_pion(deck):
     if "Lurrus of the Dream-Den" in decktext and "Chained to the Rocks" in decktext  and "Soul-Scar Mage" in decktext:
         deckname = "Boros Burn"
         media_id = 11442   #Soul-Scar Mage
-    if "Uro, Titan of Nature’s Wrath" in decktext and "Nissa, Who Shakes the World" in decktext and "Extinction Event" in decktext:
-        deckname = "Sultai Control"
-        media_id = 592   #Uro, Titan of Nature’s Wrath
-    if "Uro, Titan of Nature’s Wrath" in decktext and "Wilderness Reclamation" in decktext and "Extinction Event" in decktext:
-        deckname = "Sultai Control"
-        media_id = 592   #Uro, Titan of Nature’s Wrath
 
     #3色
     if "Traverse the Ulvenwald" in decktext and "Thoughtseize" in decktext and "Jace, Vryn's Prodigy" in decktext:
@@ -497,10 +545,19 @@ def check_arc_pion(deck):
     if "Balustrade Spy" in decktext:
         deckname = "The Spy"
         media_id = 11438   #Four-Color Omnath
+    if "Uro, Titan of Nature’s Wrath" in decktext and "Nissa, Who Shakes the World" in decktext and "Extinction Event" in decktext:
+        deckname = "Sultai Control"
+        media_id = 592   #Uro, Titan of Nature’s Wrath
+    if "Uro, Titan of Nature’s Wrath" in decktext and "Wilderness Reclamation" in decktext and "Extinction Event" in decktext:
+        deckname = "Sultai Control"
+        media_id = 592   #Uro, Titan of Nature’s Wrath
+    if "Uro, Titan of Nature’s Wrath" in decktext and "Nissa, Who Shakes the World" in decktext and "Thoughtseize" in decktext:
+        deckname = "Sultai Control"
+        media_id = 592   #Uro, Titan of Nature’s Wrath
 
     #4色
     if "Omnath, Locus of Creation" in decktext and "Genesis Ultimatum" in decktext:
-        deckname = "Four-Color Omnath"
+        deckname = "4C Omnath"
         media_id = 11437   #Four-Color Omnath
 
     #5色

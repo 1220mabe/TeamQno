@@ -103,6 +103,21 @@ def get_and_postlist(deck_url):
     tournament_name = soup.find('div', class_='decklist-card-info-tournament mr-3')
     print(tournament_name.text.strip())
 
+    # MTGAtxtファイル存在チェック(ここでポスト判定)
+    if is_japanese(tournament_name.text.strip()):
+        txtfile= convert_to_romaji(tournament_name.text.strip() +" " + player_name.text.replace('by ', '') + ".txt").replace(' ', '-').replace('(', '').replace(')', '')
+    else:
+        txtfile= (tournament_name.text.strip() +" " + player_name.text.replace('by ', '') + ".txt").replace(' ', '-').replace('(', '').replace(')', '')
+
+    txtfile= txtfile.replace('#','-')
+    txtfile= txtfile.replace('---','-')
+    txtfile= txtfile.replace('--','-')
+    txtfile= txtfile.replace('*','')
+    txtfile= txtfile.replace('|','')
+    txtfile= txtfile.replace('　',' ')
+    if os.path.exists(DeckPath + txtfile) and os.path.getsize(DeckPath +txtfile) > 0:
+        return
+
     #デッキリスト作成
     deck = []
     deck.append("<center>")
@@ -173,20 +188,6 @@ def get_and_postlist(deck_url):
                     make_row(card_count[i], card_name[i], deck)
     deck.append("[/mtg_deck]")
 
-    # MTGAtxtファイル存在チェック(ここでポスト判定)
-    if is_japanese(tournament_name.text.strip()):
-        txtfile= convert_to_romaji(tournament_name.text.strip() +" " + player_name.text.replace('by ', '') + ".txt").replace(' ', '-').replace('(', '').replace(')', '')
-    else:
-        txtfile= (tournament_name.text.strip() +" " + player_name.text.replace('by ', '') + ".txt").replace(' ', '-').replace('(', '').replace(')', '')
-
-    txtfile= txtfile.replace('#','-')
-    txtfile= txtfile.replace('---','-')
-    txtfile= txtfile.replace('--','-')
-    txtfile= txtfile.replace('*','')
-    txtfile= txtfile.replace('|','')
-    txtfile= txtfile.replace('　',' ')
-    if os.path.exists(DeckPath + txtfile) and os.path.getsize(DeckPath +txtfile) > 0:
-        return
     # MTGACode Botton作成
     today_str = datetime.today().strftime('%Y/%m/')
     mtgacode_url = ("https://teamqno.work/wp-content/uploads/"+ today_str + txtfile)

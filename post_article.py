@@ -5,16 +5,12 @@ import requests
 from urllib.parse import urljoin
 from datetime import datetime
 
-
-
 # WordPressのデータ
 WP_URL = 'https://teamqno.work/'  # 例: 'https://virtual-surfer.com/'
 WP_USERNAME = 'qno'
 WP_PASSWORD = '3gBL 0aGm cKDt sHnB GC3v xPMO'
 
-
 today_str = datetime.today().strftime('%Y/%m/%d')
-
 
 def post_article(status, slug, title, content, category_ids, tag_ids, media_id):
    """
@@ -57,7 +53,7 @@ def post_tag(tag):
                     headers={'Content-type': "application/json"},
                     auth=(user_, pass_))
     print(res)
-    return
+    return 
 
 def post_txt(file_path):
     user_ = WP_USERNAME
