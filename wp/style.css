@@ -1,0 +1,190 @@
+@charset "UTF-8";
+
+/*!
+Theme Name: Cocoon Child
+Description: Cocoon専用の子テーマ
+Theme URI: https://wp-cocoon.com/
+Author: わいひら
+Author URI: https://nelog.jp/
+Template:   cocoon-master
+Version:    1.1.2
+*/
+
+/************************************
+** 子テーマ用のスタイルを書く
+************************************/
+/*必要ならばここにコードを書く*/
+
+
+
+/*カテゴリーやタグページの見出し*/
+.ect-entry-card .card-snippet,
+.rect-entry-card .card-snippet,
+.ect-big-card-first .card-snippet {
+    clear: none;
+}
+/*カテゴリーやタグページの見出し*/
+.archive-title {
+  color: #5f5f5f;
+  text-align: center;
+  font-family: 'Baloo Thambi 2', noto sans jp;
+  font-size: 18px !important;
+  margin-left: -10px;
+}
+.archive-title :before {
+  display: none;
+}
+
+/*検索窓*/
+.search-box {
+width:100%;
+margin-top:12px;
+margin-left:12px;
+position: relative;
+display: flex;
+}
+
+.search-edit {
+width:auto; /*入力部分の長さ*/
+height:33px ;/*検索窓の高さ*/
+background: #fff; /*入力部分の背景色*/
+ font-size: 15px;
+}
+
+.sub-menu{
+    box-shadow: 0 5px 15px -5px rgba(0,0,0,0.2);
+}
+
+.menu-item:hover{
+	 border-bottom:3px solid #444444 !important;/*線の太さ色*/
+	 transition: all .3s;/*線が出てくる時間*/
+}
+.sub-menu .menu-item:hover{
+	 border-bottom:2px solid #444444 !important;/*線の太さ色*/
+	 transition: all .3s;/*線が出てくる時間*/
+}
+img.bigshadow {border: solid 1px #a3a3a3;box-shadow: 3px 3px 3px #a3a3a3;}
+/* ナビメニュー 文字*/
+#navi {
+font-weight: bold; /* 太文字 */
+text-shadow: 0 2px 4px rgba(0,0,0,0.15); /* 影 */
+}
+/*　Googleカレンダー埋め込み  */
+
+.g-calendar {
+    text-align:center;
+    }
+
+.g-calendar iframe {
+    width:100%;
+    max-width:800px;
+    height:400px;
+    }
+
+@media (min-width: 768px) {
+    .g-calendar iframe {
+      height:400px;
+    }
+}
+      
+
+/************************************
+** レスポンシブデザイン用のメディアクエリ
+************************************/
+/*1023px以下*/
+@media screen and (max-width: 1023px){
+  /*必要ならばここにコードを書く*/
+.entry-card-thumb {
+	width: 80px;
+}
+.entry-card-content {
+	margin-left: 90px;
+}
+
+}
+
+/*768px以下*/
+@media screen and (max-width: 768px){
+/*タブレット・スマホの時は非表示*/
+  .add-header-contents {display: none;
+  }
+  .entry-card-thumb {
+	   width: 80px;
+   }
+   .entry-card-content {
+	    margin-left: 90px;
+    }
+}
+
+
+/*834px以下*/
+@media screen and (max-width: 834px){
+  /*必要ならばここにコードを書く*/
+	/*検索窓*/
+.search-box {
+width:100%;
+margin:auto;
+position: relative;
+display: flex;
+}
+  .blogcard-content {
+    margin-left: 130px;
+  }
+  .blogcard-title {
+    font-size:12px;
+    line-height: 1.5;
+    height: 35px;
+    margin:0;
+  }
+  .blogcard-content:after {
+    content: "タップして読む";
+  }
+  .blogcard-thumbnail{
+    width:120px;
+  }
+  .entry-card-thumb {
+  	width: 80px;
+  }
+  .entry-card-content {
+  	margin-left: 90px;
+  }
+}
+
+/*480px以下*/
+@media screen and (max-width: 480px){
+  /*必要ならばここにコードを書く*/
+	/*検索窓*/
+.search-box {
+  width:100%;
+  margin:auto;
+  position: relative;
+  display: flex;
+}
+.blogcard-content:after {
+  width: 120px;
+  font-size: 12px;
+}
+.blogcard-title {
+  margin:0;
+}
+.entry-card-thumb {
+	width: 80px;
+}
+.entry-card-content {
+	margin-left: 90px;
+}
+
+}
+
+
+@media screen and (max-width: 320px) {
+  .blogcard-title {
+    height: 35px;
+  }
+  .entry-card-thumb {
+  	width: 80px;
+  }
+  .entry-card-content {
+  	margin-left: 90px;
+  }
+}
