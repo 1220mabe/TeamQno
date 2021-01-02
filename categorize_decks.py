@@ -62,7 +62,7 @@ def check_arc_stan(deck):
         deckname = "GU"
         media_id = 12409
     # 3色全般(トライランド)
-    if "Plains" in decktext and "Swamp" in decktext and "Swamp" in decktext:
+    if "Plains" in decktext and "Swamp" in decktext and "Plains" in decktext:
         deckname = "BGW"
         media_id = 12410
     if "Plains" in decktext and "Mountain" in decktext and "Island" in decktext:
@@ -77,6 +77,11 @@ def check_arc_stan(deck):
     if "Mountain" in decktext and "Forest" in decktext and "Island" in decktext:
         deckname = "RGU"
         media_id = 12414
+        #グリクシス BRU
+        #バント GUW
+        #ジャンド BRG
+        #ナヤ GRW
+        #エスパー BUW
 
     #1色
     if "Fervent Champion" in decktext:
