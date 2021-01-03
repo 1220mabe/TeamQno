@@ -1,9 +1,6 @@
-
 # カテゴリ名とメディアIDをリターンする。
 # メディアIDは'https://teamqno.work/wp-admin/upload.php'にアップロードされている画像を指定している
 # 画像は220 x 160
-
-
 
 
 #スタンダード
@@ -77,11 +74,22 @@ def check_arc_stan(deck):
     if "Mountain" in decktext and "Forest" in decktext and "Island" in decktext:
         deckname = "RGU"
         media_id = 12414
-        #グリクシス BRU
-        #バント GUW
-        #ジャンド BRG
-        #ナヤ GRW
-        #エスパー BUW
+    if "Mountain" in decktext and "Swamp" in decktext and "Island" in decktext:
+        deckname = "BRU"
+        media_id = 12923        #グリクシス BRU
+    if "Plains" in decktext and "Forest" in decktext and "Island" in decktext:
+        deckname = "GUW"
+        media_id = 12922        #バント GUW
+    if "Swamp" in decktext and "Forest" in decktext and "Mountain" in decktext:
+        deckname = "BRG"
+        media_id = 12919        #ジャンド BRG
+    if "Plains" in decktext and "Forest" in decktext and "Mountain" in decktext:
+        deckname = "GRW"
+        media_id = 12921        #ナヤ GRW
+    if "Plains" in decktext and "Island" in decktext and "Swamp" in decktext:
+        deckname = "BUW"
+        media_id = 12920        #エスパー BUW
+
 
     #1色
     if "Fervent Champion" in decktext:
@@ -239,6 +247,21 @@ def check_arc_hist(deck):
     if "Mountain" in decktext and "Forest" in decktext and "Island" in decktext:
         deckname = "RGU"
         media_id = 12414
+    if "Mountain" in decktext and "Swamp" in decktext and "Island" in decktext:
+        deckname = "BRU"
+        media_id = 12923        #グリクシス BRU
+    if "Plains" in decktext and "Forest" in decktext and "Island" in decktext:
+        deckname = "GUW"
+        media_id = 12922        #バント GUW
+    if "Swamp" in decktext and "Forest" in decktext and "Mountain" in decktext:
+        deckname = "BRG"
+        media_id = 12919        #ジャンド BRG
+    if "Plains" in decktext and "Forest" in decktext and "Mountain" in decktext:
+        deckname = "GRW"
+        media_id = 12921        #ナヤ GRW
+    if "Plains" in decktext and "Island" in decktext and "Swamp" in decktext:
+        deckname = "BUW"
+        media_id = 12920        #エスパー BUW
 
     #1色
     if "Anax, Hardened in the Forge" in decktext:
@@ -426,6 +449,21 @@ def check_arc_pion(deck):
     if "Mountain" in decktext and "Forest" in decktext and "Island" in decktext:
         deckname = "RGU"
         media_id = 12414
+    if "Mountain" in decktext and "Swamp" in decktext and "Island" in decktext:
+        deckname = "BRU"
+        media_id = 12923        #グリクシス BRU
+    if "Plains" in decktext and "Forest" in decktext and "Island" in decktext:
+        deckname = "GUW"
+        media_id = 12922        #バント GUW
+    if "Swamp" in decktext and "Forest" in decktext and "Mountain" in decktext:
+        deckname = "BRG"
+        media_id = 12919        #ジャンド BRG
+    if "Plains" in decktext and "Forest" in decktext and "Mountain" in decktext:
+        deckname = "GRW"
+        media_id = 12921        #ナヤ GRW
+    if "Plains" in decktext and "Island" in decktext and "Swamp" in decktext:
+        deckname = "BUW"
+        media_id = 12920        #エスパー BUW
 
     #1色
     if "Champion of Dusk" in decktext:
