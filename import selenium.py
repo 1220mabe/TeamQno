@@ -21,8 +21,8 @@ browser.get(login_url)
 time.sleep(1)
 
 #ログイン処理
-username = "qno"
-password = "Team-9no"
+username = ""
+password = ""
 
 elem_username = browser.find_element_by_id("user_login")
 elem_username.send_keys(username)
